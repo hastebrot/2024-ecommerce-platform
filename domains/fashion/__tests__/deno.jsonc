@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "test": "deno test -A --no-check",
+    "test:watch": "deno test -A --no-check --watch"
+  },
+  "test": {
+    "include": ["api/"]
+  }
+}
