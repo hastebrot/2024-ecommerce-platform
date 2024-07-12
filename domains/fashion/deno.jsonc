@@ -1,0 +1,25 @@
+{
+  "workspace": [
+    "__tests__",
+    "services/api-gateway",
+    "services/catalog"
+  ],
+  "unstable": [
+    "kv"
+  ],
+  "tasks": {
+    "dev": "deno task dev:api-gateway & deno task dev:catalog",
+    "dev:api-gateway": "cd services/api-gateway && PORT=8080 deno task -q dev",
+    "dev:catalog": "cd services/catalog && PORT=8081 deno task -q dev",
+    "test": "cd __tests__ && deno task -q test",
+    "test:watch": "cd __tests__ && deno task -q test:watch"
+  },
+  "imports": {
+    "@ngneat/falso": "npm:@ngneat/falso@7.2.0",
+    "nanoid": "npm:nanoid@5.0.5",
+    "zod": "npm:zod@3.23.8"
+  },
+  "fmt": {
+    "lineWidth": 100
+  }
+}
