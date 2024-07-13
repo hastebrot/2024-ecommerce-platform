@@ -58,10 +58,7 @@ export const Fmt = {
     return formatBytes(bytes);
   },
 
-  millis(
-    millis: number,
-    roundTo: "millis" | "micros" | "nanos" = "micros",
-  ): string {
+  millis(millis: number, roundTo: "millis" | "micros" | "nanos" = "micros"): string {
     if (roundTo === "millis") {
       millis = Math.round(millis);
     } else if (roundTo === "micros") {

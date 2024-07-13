@@ -1,6 +1,7 @@
 {
   "workspace": [
     "__tests__",
+    "applications/fashion-ui",
     "services/api-gateway",
     "services/catalog"
   ],
@@ -8,15 +9,20 @@
     "kv"
   ],
   "tasks": {
-    "dev": "deno task dev:api-gateway & deno task dev:catalog",
+    "dev": "deno task dev:api-gateway & deno task dev:catalog & deno task dev:fashion-ui",
     "dev:api-gateway": "cd services/api-gateway && PORT=8080 deno task -q dev",
     "dev:catalog": "cd services/catalog && PORT=8081 deno task -q dev",
+    "dev:fashion-ui": "cd applications/fashion-ui && PORT=8082 deno task -q dev",
     "test": "cd __tests__ && deno task -q test",
     "test:watch": "cd __tests__ && deno task -q test:watch"
   },
   "imports": {
     "@ngneat/falso": "npm:@ngneat/falso@7.2.0",
+    "clsx": "npm:clsx@2.1.1",
+    "lucide-preact": "npm:lucide-preact@0.408.0",
     "nanoid": "npm:nanoid@5.0.5",
+    "preact": "npm:preact@10.22.1",
+    "preact-render-to-string": "npm:preact-render-to-string@6.5.5",
     "zod": "npm:zod@3.23.8"
   },
   "fmt": {

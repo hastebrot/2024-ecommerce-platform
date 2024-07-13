@@ -5,13 +5,15 @@ const domainName = "fashion";
 const serviceName = "api-gateway";
 const apiPort = Env.integerOrThrow("PORT");
 
-Deno.serve({
-  port: apiPort,
-  onListen() {
-    Log.debug("http server running", { domainName, serviceName, apiPort });
-  },
-  handler: async (req: Request) => {
-    Log.debug("request", { url: req.url });
-    return await apiHandler(req);
-  },
-});
+if (import.meta.main) {
+  Deno.serve({
+    port: apiPort,
+    onListen() {
+      Log.debug("http server running", { domainName, serviceName, apiPort });
+    },
+    handler: async (req: Request) => {
+      Log.debug("request", { url: req.url });
+      return await apiHandler(req);
+    },
+  });
+}
