@@ -16,7 +16,7 @@ export const handleIndex = async (ctx: Context, _req: Request): Promise<Response
         <meta
           // CSP policy for htmx server content to mitigate cross-site scripting.
           http-equiv="content-security-policy"
-          content="default-src 'self' 'unsafe-inline' 'unsafe-eval' unpkg.com;"
+          content="default-src 'self' 'unsafe-inline' 'unsafe-eval' unpkg.com tailwindui.com;"
         />
         <meta
           name="htmx-config"
