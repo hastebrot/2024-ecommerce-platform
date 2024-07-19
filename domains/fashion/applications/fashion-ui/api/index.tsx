@@ -16,7 +16,7 @@ export const handleIndex = async (ctx: Context, _req: Request): Promise<Response
         <meta
           // CSP policy for htmx server content to mitigate cross-site scripting.
           http-equiv="content-security-policy"
-          content="default-src 'self' 'unsafe-inline' 'unsafe-eval' unpkg.com;"
+          content="default-src 'self' 'unsafe-inline' 'unsafe-eval' unpkg.com tailwindui.com;"
         />
         <meta
           name="htmx-config"
@@ -42,13 +42,14 @@ export const handleIndex = async (ctx: Context, _req: Request): Promise<Response
           "supports-[-webkit-touch-callout:none]:min-h-[-webkit-fill-available]"
         )}
       >
-        <div
-          class="hidden"
-          // Trigger browser refresh after development webserver changes using endpoint polling.
-          hx-get={`/site-refresh?timestamp=${ctx.serverTimestamp}`}
-          hx-trigger={`every ${siteRefreshMillis}ms`}
-          hx-swap="none swap:0s settle:0s"
-        ></div>
+        <div class="hidden">
+          <div
+            // Trigger browser refresh after development webserver changes using endpoint polling.
+            hx-get={`/site-refresh?timestamp=${ctx.serverTimestamp}`}
+            hx-trigger={`every ${siteRefreshMillis}ms`}
+            hx-swap="none swap:0s settle:0s"
+          ></div>
+        </div>
         <main
           class="relative grid w-full h-full"
           hx-ext="morph"
