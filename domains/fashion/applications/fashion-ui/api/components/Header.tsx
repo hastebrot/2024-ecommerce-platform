@@ -2,7 +2,7 @@
 import { icons, LucideIcon } from "lucide-preact";
 import { classNames, ComponentChildren, createElement } from "../../helper/jsx.ts";
 
-export const HeaderContent = () => {
+export const Header = () => {
   return (
     <header
       class={classNames(
@@ -10,39 +10,35 @@ export const HeaderContent = () => {
         "[box-shadow:inset_0px_-0.0625rem_0px_0px_#ccc,inset_0px_-0.3125rem_0px_0px_rgba(0,0,0,0.05)]"
       )}
     >
-      <HeaderNavigation></HeaderNavigation>
+      <div class="flex">
+        <HeaderHomepage />
+        <div class="header-navigation relative flex items-end w-full">
+          <nav>
+            <FunnelNavigationTabs>
+              <FunnelNavigationTab>Märkte & Angebote</FunnelNavigationTab>
+              <FunnelNavigationTab isActive>Abholservice</FunnelNavigationTab>
+              <FunnelNavigationTab>Rezepte & Ernährung</FunnelNavigationTab>
+            </FunnelNavigationTabs>
+          </nav>
+          <div class="absolute right-[1rem] top-[0.25rem]">
+            <UserNavigation />
+          </div>
+        </div>
+      </div>
     </header>
   );
 };
 
-export const HeaderNavigation = () => {
-  return <Header></Header>;
-};
-
-export const Header = () => {
+export const HeaderHomepage = () => {
   return (
-    <div class="flex">
-      <a
-        class={classNames(
-          "flex items-center justify-center w-[10rem] h-[5rem]",
-          "bg-[#cc071e] text-[#fffffe] text-[2rem] font-black uppercase cursor-pointer"
-        )}
-      >
-        SHOP
-      </a>
-      <div class="header-navigation relative flex items-end w-full">
-        <nav>
-          <FunnelNavigationTabs>
-            <FunnelNavigationTab>Märkte & Angebote</FunnelNavigationTab>
-            <FunnelNavigationTab isActive>Abholservice</FunnelNavigationTab>
-            <FunnelNavigationTab>Rezepte & Ernährung</FunnelNavigationTab>
-          </FunnelNavigationTabs>
-        </nav>
-        <div class="absolute right-[1rem] top-[0.25rem]">
-          <UserNavigation />
-        </div>
-      </div>
-    </div>
+    <a
+      class={classNames(
+        "header-homepage flex items-center justify-center w-[10rem] h-[5rem]",
+        "bg-[#cc071e] text-[#fffffe] text-[2rem] font-black uppercase cursor-pointer"
+      )}
+    >
+      SHOP
+    </a>
   );
 };
 

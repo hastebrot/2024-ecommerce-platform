@@ -6,19 +6,24 @@ import { CategoriesNavigation } from "../components/CategoriesNavigation.tsx";
 import { DisplayOptions } from "../components/DisplayOptions.tsx";
 import { FacetedProductList } from "../components/FacetedProductList.tsx";
 import { Footer } from "../components/Footer.tsx";
-import { HeaderContent } from "../components/HeaderContent.tsx";
-import { ShoppingInteractions } from "../components/ShoppingInteractions.tsx";
+import { Header } from "../components/Header.tsx";
+import { ShoppingHeader } from "../components/ShoppingHeader.tsx";
 
 // deno-lint-ignore require-await
 export const handleProductListing = async (_ctx: Context, _req: Request): Promise<Response> => {
   const html = renderToString(
     <div class="bg-[#fbfaf9] [font-stretch:95%]">
-      <HeaderContent />
-      <ShoppingInteractions />
+      {/* header. */}
+      <Header />
+      <ShoppingHeader />
       <CategoriesNavigation />
+
+      {/* page content. */}
       <Breadcrumbs />
       <DisplayOptions />
       <FacetedProductList />
+
+      {/* footer. */}
       <Footer />
     </div>
   );

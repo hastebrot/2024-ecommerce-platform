@@ -3,7 +3,7 @@ import { icons } from "lucide-preact";
 import { classNames, createElement } from "../../helper/jsx.ts";
 import { ProductActions } from "./FacetedProductList.tsx";
 
-export const ShoppingInteractions = () => {
+export const ShoppingHeader = () => {
   return (
     <div class="border-b border-[#ccc] bg-[#fff] h-[5rem] px-[1rem] flex items-center justify-between">
       <ShoppingSearch />
