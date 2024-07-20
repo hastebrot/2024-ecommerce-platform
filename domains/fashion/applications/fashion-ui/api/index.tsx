@@ -6,7 +6,10 @@ const title = "fashion-ui";
 const siteRefreshMillis = 250;
 
 // deno-lint-ignore require-await
-export const handleIndex = async (ctx: Context, _req: Request): Promise<Response> => {
+export const handleIndex = async (ctx: Context, req: Request): Promise<Response> => {
+  const url = new URL(req.url);
+  const pageParam = url.searchParams.get("page");
+
   const html = renderToString(
     <html lang="en">
       <head>
@@ -53,7 +56,7 @@ export const handleIndex = async (ctx: Context, _req: Request): Promise<Response
         <main
           class="relative grid w-full h-full"
           hx-ext="morph"
-          hx-get="/site"
+          hx-get={`/site?page=${pageParam}`}
           hx-trigger="load"
           hx-swap="innerHTML"
         ></main>

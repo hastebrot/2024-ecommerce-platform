@@ -1,4 +1,3 @@
-/** @jsx createElement */
 import { Context } from "../model.ts";
 
 // deno-lint-ignore require-await
