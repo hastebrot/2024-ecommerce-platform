@@ -20,6 +20,8 @@ export type BreadcrumbsLinkProps = {
 };
 
 export const BreadcrumbsLink = (props: BreadcrumbsLinkProps) => {
+  // TODO(benjamin): in product details parent-links use text-[#4a4a4a].
+
   return (
     <a
       class={classNames(
@@ -45,6 +47,8 @@ export type BreadcrumbsItemProps = {
 };
 
 export const BreadcrumbsItem = (props: BreadcrumbsItemProps) => {
+  // TODO(benjamin): in product details leaf-link uses text-[#bb2929].
+
   return (
     <div class={classNames("flex items-center text-[0.875rem] leading-[1.125rem] text-[#1c1c1c]")}>
       {props.text}

@@ -127,10 +127,10 @@ export const ShoppingSearchProduct = (props: ShoppingSearchSuggestionProps) => {
 
 export const ShoppingNavigation = () => {
   return (
-    <div class="flex items-center gap-[1rem]">
+    <div class="flex items-center ml-[1rem] gap-[1rem]">
       <ShoppingNavigationItemFavorites />
       <ShoppingNavigationItemBasket price="0,00 €" />
-      <ShoppingNavigationItemBasket price="12,34 €" amount={2} isFilled />
+      {/* <ShoppingNavigationItemBasket price="12,34 €" amount={2} isFilled /> */}
     </div>
   );
 };

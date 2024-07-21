@@ -5,6 +5,11 @@ import { Breadcrumbs } from "../components/Breadcrumbs.tsx";
 import { CategoriesNavigation } from "../components/CategoriesNavigation.tsx";
 import { Footer } from "../components/Footer.tsx";
 import { Header } from "../components/Header.tsx";
+import {
+  FooterNewsletter,
+  ProductDetails,
+  ProductRecommendations,
+} from "../components/ProductDetails.tsx";
 import { ShoppingHeader } from "../components/ShoppingHeader.tsx";
 
 // deno-lint-ignore require-await
@@ -18,8 +23,11 @@ export const handleProductDetails = async (_ctx: Context, _req: Request): Promis
 
       {/* page content. */}
       <Breadcrumbs />
+      <ProductDetails />
+      <ProductRecommendations />
 
       {/* footer. */}
+      <FooterNewsletter />
       <Footer />
     </div>
   );
