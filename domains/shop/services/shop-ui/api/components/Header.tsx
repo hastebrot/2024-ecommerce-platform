@@ -33,7 +33,7 @@ export const HeaderHomepage = () => {
   return (
     <a
       class={classNames(
-        "header-homepage flex items-center justify-center w-[10rem] h-[5rem]",
+        "header-homepage shrink-0 flex items-center justify-center w-[10rem] h-[5rem]",
         "bg-[#cc071e] text-[#fffffe] text-[2rem] font-black uppercase cursor-pointer"
       )}
     >
