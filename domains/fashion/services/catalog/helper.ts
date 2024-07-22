@@ -1,5 +1,5 @@
-import { format as formatBytes } from "https://deno.land/std@0.224.0/fmt/bytes.ts";
-import { format as formatMillis } from "https://deno.land/std@0.224.0/fmt/duration.ts";
+import { format as formatBytes } from "@std/fmt/bytes.ts";
+import { format as formatMillis } from "@std/fmt/duration.ts";
 import { nanoid } from "nanoid";
 import { z } from "zod";
 
@@ -58,10 +58,7 @@ export const Fmt = {
     return formatBytes(bytes);
   },
 
-  millis(
-    millis: number,
-    roundTo: "millis" | "micros" | "nanos" = "micros",
-  ): string {
+  millis(millis: number, roundTo: "millis" | "micros" | "nanos" = "micros"): string {
     if (roundTo === "millis") {
       millis = Math.round(millis);
     } else if (roundTo === "micros") {
@@ -95,10 +92,7 @@ export const Zod = {
     return schema.describe(description);
   },
 
-  object<T extends z.ZodRawShape>(
-    description: string,
-    shape: T,
-  ): ReturnType<typeof z.object<T>> {
+  object<T extends z.ZodRawShape>(description: string, shape: T): ReturnType<typeof z.object<T>> {
     return z.object(shape).describe(description);
   },
 };
