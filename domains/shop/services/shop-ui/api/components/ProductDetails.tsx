@@ -1,7 +1,7 @@
 /** @jsx createElement */
 import { icons } from "lucide-preact";
 import { classNames, ComponentChildren, createElement } from "../../helper/jsx.ts";
-import { ProductActions } from "../components/FacetedProductList.tsx";
+import { ProductActions } from "./FacetedProductList.tsx";
 
 export const ProductDetails = () => {
   return (

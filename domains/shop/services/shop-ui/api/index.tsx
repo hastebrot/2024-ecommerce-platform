@@ -2,7 +2,7 @@
 import { classNames, createElement, renderToString } from "../helper/jsx.ts";
 import { Context } from "../model.ts";
 
-const title = "fashion-ui";
+const title = "shop-ui";
 const siteRefreshMillis = 250;
 
 // deno-lint-ignore require-await

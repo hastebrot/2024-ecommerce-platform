@@ -19,6 +19,6 @@
     "editor.formatOnSave": true
   },
   "tailwindCSS.experimental.configFile": {
-    "domains/fashion/tailwind.config.js": "domains/fashion/**"
+    "domains/shop/tailwind.config.js": "domains/shop/**"
   }
 }

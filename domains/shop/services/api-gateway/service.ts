@@ -1,8 +1,8 @@
 import { apiHandler } from "./api.ts";
 import { Env, Log } from "./helper.ts";
 
-const domainName = "fashion";
-const serviceName = "catalog";
+const domainName = "shop";
+const serviceName = "api-gateway";
 const apiPort = Env.integerOrThrow("PORT");
 
 if (import.meta.main) {

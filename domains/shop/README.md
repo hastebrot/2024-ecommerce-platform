@@ -1,4 +1,4 @@
-## domains/fashion
+## `domains/shop`
 
 **architecture:**
 

@@ -2,7 +2,7 @@
 
 **usage:**
 
-- `❯ cd domains/fashion/`
+- `❯ cd domains/shop/`
 - `❯ deno task dev`
 - `❯ deno task test`
 
@@ -16,16 +16,15 @@ root directory.
 
 `domain` directory.
 
-- `domains/fashion/`
+- `domains/shop/`
   - `deno.jsonc`
-  - `applications/`
   - `packages/`
   - `services/`
   - `__tests__/`
 
 `service` directory.
 
-- `domains/fashion/services/api-gateway/`
+- `domains/shop/services/api-gateway/`
   - `deno.jsonc`
   - `api.ts`
   - `client.ts`
