@@ -5,9 +5,6 @@
     "services/api-gateway",
     "services/catalog"
   ],
-  "unstable": [
-    "kv"
-  ],
   "tasks": {
     "dev": "deno task dev:api-gateway & deno task dev:catalog & deno task dev:fashion-ui",
     "dev:api-gateway": "cd services/api-gateway && PORT=8080 deno task -q dev",
@@ -18,6 +15,7 @@
   },
   "imports": {
     "@ngneat/falso": "npm:@ngneat/falso@7.2.0",
+    "@std/": "https://deno.land/std@0.224.0/",
     "clsx": "npm:clsx@2.1.1",
     "lucide-preact": "npm:lucide-preact@0.408.0",
     "nanoid": "npm:nanoid@5.0.5",
@@ -25,6 +23,9 @@
     "preact-render-to-string": "npm:preact-render-to-string@6.5.5",
     "zod": "npm:zod@3.23.8"
   },
+  "unstable": [
+    "kv"
+  ],
   "fmt": {
     "lineWidth": 100
   }

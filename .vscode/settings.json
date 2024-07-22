@@ -17,5 +17,8 @@
   "[markdown]": {
     "editor.defaultFormatter": "denoland.vscode-deno",
     "editor.formatOnSave": true
+  },
+  "tailwindCSS.experimental.configFile": {
+    "domains/fashion/tailwind.config.js": "domains/fashion/**"
   }
 }

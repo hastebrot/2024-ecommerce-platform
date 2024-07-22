@@ -1,5 +1,5 @@
-import { format as formatBytes } from "https://deno.land/std@0.224.0/fmt/bytes.ts";
-import { format as formatMillis } from "https://deno.land/std@0.224.0/fmt/duration.ts";
+import { format as formatBytes } from "@std/fmt/bytes.ts";
+import { format as formatMillis } from "@std/fmt/duration.ts";
 
 export const Fmt = {
   bytes(bytes: number): string {
