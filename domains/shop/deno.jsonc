@@ -1,15 +1,15 @@
 {
   "workspace": [
     "__tests__",
-    "applications/fashion-ui",
     "services/api-gateway",
-    "services/catalog"
+    "services/catalog",
+    "services/shop-ui"
   ],
   "tasks": {
-    "dev": "deno task dev:api-gateway & deno task dev:catalog & deno task dev:fashion-ui",
+    "dev": "deno task dev:api-gateway & deno task dev:catalog & deno task dev:shop-ui",
     "dev:api-gateway": "cd services/api-gateway && PORT=8080 deno task -q dev",
     "dev:catalog": "cd services/catalog && PORT=8081 deno task -q dev",
-    "dev:fashion-ui": "cd applications/fashion-ui && PORT=8082 deno task -q dev",
+    "dev:shop-ui": "cd services/shop-ui && PORT=8082 deno task -q dev",
     "test": "cd __tests__ && deno task -q test",
     "test:watch": "cd __tests__ && deno task -q test:watch"
   },
