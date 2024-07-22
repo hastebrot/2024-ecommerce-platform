@@ -15,36 +15,53 @@ export const FacetList = () => {
   return (
     <aside class="flex">
       <FacetGroupListContainer>
-        <FacetGroupContainer title="Kategorien">
-          <FacetGroupOption title="Obst & Gemüse" />
-          <FacetGroupOption title="Brot, Cerealien & Aufstriche" />
-          <FacetGroupOption title="Drogerie & Kosmetik" />
-          <FacetGroupOption title="Fertiggerichte & Konserven" />
-          <FacetGroupOption title="Fleisch & Fisch" />
-          <FacetGroupOption title="Getränke & Genussmittel" />
-          <FacetGroupOption title="Haus & Freizeit" />
-          <FacetGroupOption title="Kaffee, Tee & Kakao" />
-          <FacetGroupOption title="Kochen & Backen" />
-          <FacetGroupOption title="Käse, Eier & Molkerei" />
-          <FacetGroupOption title="Süßes & Salziges" />
-          <FacetGroupOption title="Tiefkühlkost" />
-          <FacetGroupOption title="Öle, Soßen & Gewürze" />
+        <FacetGroupContainer title="Kategorien" isCollapsed>
+          <FacetGroup>
+            <FacetGroupOption title="Obst & Gemüse" />
+            <FacetGroupOption title="Brot, Cerealien & Aufstriche" />
+            <FacetGroupOption title="Drogerie & Kosmetik" />
+            <FacetGroupOption title="Fertiggerichte & Konserven" />
+            <FacetGroupOption title="Fleisch & Fisch" />
+            <FacetGroupOption title="Getränke & Genussmittel" />
+            <FacetGroupOption title="Haus & Freizeit" />
+            <FacetGroupOption title="Kaffee, Tee & Kakao" />
+            <FacetGroupOption title="Kochen & Backen" />
+            <FacetGroupOption title="Käse, Eier & Molkerei" />
+            <FacetGroupOption title="Süßes & Salziges" />
+            <FacetGroupOption title="Tiefkühlkost" />
+            <FacetGroupOption title="Öle, Soßen & Gewürze" />
+          </FacetGroup>
+          <FacetGroupResetButton text="Zurück zur Übersicht" />
         </FacetGroupContainer>
 
-        <FacetGroupContainer title="Eigenschaften">
-          <FacetGroupOptionCheckbox title="Alkoholfrei" />
-          <FacetGroupOptionCheckbox title="Angebote" />
-          <FacetGroupOptionCheckbox title="Bio" />
-          <FacetGroupOptionCheckbox title="Glutenfrei" />
-          <FacetGroupOptionCheckbox title="Laktosefrei" />
-          <FacetGroupOptionCheckbox title="Neu" />
-          <FacetGroupOptionCheckbox title="Regional" />
-          <FacetGroupOptionCheckbox title="Tiefpreis" />
-          <FacetGroupOptionCheckbox title="Vegan" />
-          <FacetGroupOptionCheckbox title="Vegetarisch" />
+        <FacetGroupContainer title="Eigenschaften" isCollapsed>
+          <FacetGroup>
+            <FacetGroupOptionCheckbox title="Alkoholfrei" />
+            <FacetGroupOptionCheckbox title="Angebote" />
+            <FacetGroupOptionCheckbox title="Bio" />
+            <FacetGroupOptionCheckbox title="Glutenfrei" />
+            <FacetGroupOptionCheckbox title="Laktosefrei" />
+            <FacetGroupOptionCheckbox title="Neu" />
+            <FacetGroupOptionCheckbox title="Regional" />
+            <FacetGroupOptionCheckbox title="Tiefpreis" />
+            <FacetGroupOptionCheckbox title="Vegan" />
+            <FacetGroupOptionCheckbox title="Vegetarisch" />
+          </FacetGroup>
         </FacetGroupContainer>
 
-        <FacetGroupContainer title="Marken" isCollapsed />
+        <FacetGroupContainer title="Marken">
+          <FacetGroup>
+            <FacetGroupOptionCheckbox title="Dr. Oetker" isSelected />
+          </FacetGroup>
+          <FacetGroupSearchFilter placeholderText="Marke finden" />
+          <FacetGroup>
+            <FacetGroupOptionCheckbox title="Maggi" />
+            <FacetGroupOptionCheckbox title="Mirácoli" />
+            <FacetGroupOptionCheckbox title="Mondamin" />
+            <FacetGroupOptionCheckbox title="Pfanni" />
+          </FacetGroup>
+          <FacetGroupResetButton text="Entfernen" />
+        </FacetGroupContainer>
       </FacetGroupListContainer>
     </aside>
   );
@@ -91,9 +108,7 @@ export const FacetGroupContainer = (props: FacetGroupContainerProps) => {
         </span>
       </label>
 
-      <section class="hidden peer-[:has(input:checked)]:block">
-        <FacetGroup>{props.children}</FacetGroup>
-      </section>
+      <section class="hidden peer-[:has(input:checked)]:block">{props.children}</section>
     </li>
   );
 };
@@ -125,18 +140,115 @@ export const FacetGroupOption = (props: FacetGroupOptionProps) => {
   );
 };
 
-export const FacetGroupOptionCheckbox = (props: FacetGroupOptionProps) => {
+export type FacetGroupOptionCheckboxProps = {
+  title: string;
+  isSelected?: boolean;
+};
+
+export const FacetGroupOptionCheckbox = (props: FacetGroupOptionCheckboxProps) => {
+  const IconCheckbox = (props: { class: string }) => {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        class={props.class}
+      >
+        <g fill="none" fill-rule="evenodd">
+          <rect width="29" height="29" x="0.5" y="0.5" stroke="#cccccc" rx="4" />
+        </g>
+      </svg>
+    );
+  };
+  const IconCheckboxSelected = (props: { class: string }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      class={props.class}
+    >
+      <g fill="none" fill-rule="evenodd">
+        <rect width="29" height="29" x="0.5" y="0.5" stroke="#9b9b9b" rx="4" />
+        <polyline
+          stroke="#cc071e"
+          stroke-width="2.063"
+          points="6 14.886 12.167 21 24 9"
+          stroke-linecap="round"
+        />
+      </g>
+    </svg>
+  );
+
   return (
     <li class="facet-group-option flex flex-col text-[16px] leading-[1.5] font-[400]">
-      <button class="text-left text-[#1c1c1c] hover:bg-[#f1f1f1] p-[8px]">
-        <div class="flex items-start gap-x-[8px]">
-          <div class="inline-flex items-center justify-center w-[24px] h-[24px] shrink-0">
-            <icons.Square class="w-[20px] h-[20px] shrink-0 [stroke-width:calc(1.5px*24/20)]" />
+      <button class="group text-left text-[#1c1c1c] p-[8px] pl-[16px]">
+        <div class="flex items-start gap-x-[12px]">
+          <div
+            class={classNames(
+              "inline-flex items-center justify-center w-[20px] h-[20px] mt-[2px] shrink-0",
+              "group-hover:[box-shadow:inset_0_0_0_1px_#1c1c1c,0_0_0_1px_#1c1c1c]",
+              "group-hover:rounded-[2px]"
+            )}
+          >
+            {!props.isSelected && (
+              <IconCheckbox class="w-[20px] h-[20px] shrink-0 [stroke-width:calc(1.5px*24/20)]" />
+            )}
+            {props.isSelected && (
+              <IconCheckboxSelected class="w-[20px] h-[20px] shrink-0 [stroke-width:calc(1.5px*24/20)]" />
+            )}
           </div>
           <span>{props.title}</span>
         </div>
       </button>
     </li>
+  );
+};
+
+export type FacetGroupSearchFilterProps = {
+  placeholderText: string;
+};
+
+export const FacetGroupSearchFilter = (props: FacetGroupSearchFilterProps) => {
+  return (
+    <div class="relative py-[16px] pt-[8px] pb-[8px] px-[16px]">
+      <input
+        class={classNames(
+          "w-full px-[12px] h-[2.5rem]",
+          "border border-[#ccc] block rounded-[2px] [outline:0]",
+          "font-[400] text-[#1c1c1c] text-[1rem] leading-[1.3125rem]",
+          "placeholder:text-[#767676]",
+          "hover:border-transparent hover:bg-[#f1f1f1]",
+          "hover:[box-shadow:0_0_0_2px_#1c1c1c]"
+        )}
+        type="text"
+        placeholder={props.placeholderText}
+      />
+      <div class="absolute right-[24px] inset-y-0 flex items-center justify-center pointer-events-none">
+        <icons.Search class="w-[18px] h-[18px] shrink-0 [stroke-width:calc(1.5px*24/18)]" />
+      </div>
+    </div>
+  );
+};
+
+type FacetGroupResetButtonProps = {
+  text: string;
+};
+
+export const FacetGroupResetButton = (props: FacetGroupResetButtonProps) => {
+  return (
+    <div
+      class={classNames(
+        "bg-[#e1e1e1] cursor-pointer",
+        "my-[16px] mx-auto w-full max-w-[198px] py-[12px] px[8px] rounded-[2px]",
+        "font-[400] text-[16px] leading-[1] text-[1c1c1c] text-center",
+        "[box-shadow:inset_0_0_0_1px_#676767]",
+        "hover:[box-shadow:inset_0_0_0_1px_#1c1c1c,0_0_0_1px_#1c1c1c]"
+      )}
+    >
+      {props.text}
+    </div>
   );
 };
 
