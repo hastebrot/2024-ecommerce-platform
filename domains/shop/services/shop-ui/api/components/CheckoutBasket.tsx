@@ -3,6 +3,7 @@ import { icons, LucideIcon } from "lucide-preact";
 import { classNames, ComponentChildren, createElement } from "../../helper/jsx.ts";
 import { HeaderHomepage } from "../components/Header.tsx";
 import { ProductRecommendations } from "./ProductDetails.tsx";
+import { ShoppingSearch } from "./ShoppingHeader.tsx";
 
 export const CheckoutHeader = () => {
   return (
@@ -96,9 +97,21 @@ export const CheckoutPageContent = () => {
       <h1 class="checkout-title text-[#4a4a4a] text-center my-[36px] font-[700] text-[40px] leading-[48px]">
         Warenkorb
       </h1>
+      <CheckoutSearchContainer />
       <BasketOverview />
       <ProductRecommendations />
     </section>
+  );
+};
+
+export const CheckoutSearchContainer = () => {
+  return (
+    <div class="m-auto w-[640px]">
+      <span class="block text-center font-[400] text-[16px] leading-[22px] text-[#4c4c4c] pb-[12px]">
+        Noch etwas vergessen? Suche nach Produkten und lege sie in den Warenkorb.
+      </span>
+      <ShoppingSearch />
+    </div>
   );
 };
 
@@ -107,7 +120,7 @@ export const BasketOverview = () => {
     <div
       class={classNames(
         "grid grid-flow-row grid-cols-[auto_352px] grid-rows-[auto_auto_auto] items-start",
-        "px-[16px] gap-x-[24px] gap-y-[32px] mb-[50px]"
+        "px-[16px] gap-x-[24px] gap-y-[32px] mt-[72px] mb-[50px]"
       )}
     >
       <BasketButton type="secondary" iconBefore={icons.ArrowLeft}>
@@ -141,8 +154,8 @@ export const BasketOverviewList = () => {
             "mt-[12px] gap-x-[12px]"
           )}
         >
-          <div>11011 Berlin</div>
-          <div>Abholtermin noch nicht gewählt</div>
+          <BasketInformationItem icon={icons.MapPin} text="11011 Berlin" />
+          <BasketInformationItem icon={icons.CalendarDays} text="Abholtermin noch nicht gewählt" />
         </div>
       </header>
 
@@ -175,6 +188,22 @@ export const BasketOverviewList = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+export type BasketInformationItemProps = {
+  text: string;
+  icon: LucideIcon;
+};
+
+export const BasketInformationItem = (props: BasketInformationItemProps) => {
+  return (
+    <div class="flex pr-[16px] gap-[8px] border-r border-[#ccc] last:border-0 text-[#1c1c1c]">
+      <span class="flex items-center justify-center w-[24px] h-[24px] shrink-0">
+        <props.icon class="w-[20px] h-[20px] shrink-0 [stroke-width:calc(2px*24/20)]" />
+      </span>
+      <span class="font-[400] text-[16px] leading-[24px]">{props.text}</span>
+    </div>
   );
 };
 
@@ -246,10 +275,13 @@ export const BasketLineItem = (props: BasketLineItemProps) => {
 
 export const BasketLineItemImage = () => {
   return (
-    <span class="flex items-center justify-start w-[88px] h-[88px]">
+    <span class="flex items-center justify-start w-[88px] h-[88px] shrink-0">
       <icons.Image
         style="--width: 24; --inner-width: 18;"
-        class="w-[72px] h-[72px] origin-center scale-[calc(24/18)] shrink-0 text-[#949494] [stroke-width:calc(2px*18/72)]"
+        class={classNames(
+          "w-[72px] h-[72px] shrink-0 text-[#949494] [stroke-width:calc(2px*18/72)]",
+          "origin-center scale-[calc(24/18)]"
+        )}
       />
     </span>
   );
@@ -319,7 +351,14 @@ export const BasketSummaryContainer = () => {
   return (
     <div class="sticky top-[32px]">
       <BasketSummary />
-      <BasketInfobox />
+      <BasketInfobox linkText="Mehr zu Ersatzartikeln">
+        Ist ein Produkt nicht mehr vorrätig, bieten wir dir ein ähnliches als Ersatzartikel an.
+      </BasketInfobox>
+      <BasketInfobox linkText="Mehr zu Transportboxen">
+        <span class="hyphens-manual">
+          Wir bieten dir Pfand-Transport&shy;boxen für deine Einkäufe an.
+        </span>
+      </BasketInfobox>
     </div>
   );
 };
@@ -348,14 +387,25 @@ export const BasketSummary = () => {
   );
 };
 
-export const BasketInfobox = () => {
+export type BasketInfoboxProps = {
+  children?: ComponentChildren;
+  linkText: string;
+};
+
+export const BasketInfobox = (props: BasketInfoboxProps) => {
   return (
-    <div class="bg-[#eaeef3] rounded-[16px] p-[16px] mb-[16px]">
-      <div class="font-[400] text-[16px] leading-[24px] text-[#1c1c1c]">
-        Ist ein Produkt nicht mehr vorrätig, bieten wir dir ein ähnliches als Ersatzartikel an.
-      </div>
-      <div class="mt-[8px] font-[500] text-[16px] leading-[24px] text-[#1c1c1c] underline">
-        <a>Mehr zu Ersatzartikeln</a>
+    <div class="bg-[#eaeef3] rounded-[16px] p-[16px] mb-[16px] flex gap-[8px]">
+      <span class="flex items-start justify-start shrink-0 w-[48px] h-[48px]">
+        <icons.Image class="w-[40px] h-[40px] shrink-0 [stroke-width:calc(2px*24/40)]" />
+      </span>
+      <div>
+        <div class="font-[400] text-[16px] leading-[24px] text-[#1c1c1c]">{props.children}</div>
+        <a class="mt-[8px] flex items-center gap-[8px] cursor-pointer text-[#1c1c1c] hover:text-[#cc071e]">
+          <span class="flex items-center justify-center w-[24px] h-[24px] shrink-0">
+            <icons.ArrowRight class="w-[24px] h-[24px] shrink-0 [stroke-width:calc(2px*24/24)]" />
+          </span>
+          <span class="font-[500] text-[16px] leading-[24px] underline">{props.linkText}</span>
+        </a>
       </div>
     </div>
   );

@@ -6,15 +6,19 @@ import { ProductActions } from "./FacetedProductList.tsx";
 export const ShoppingHeader = () => {
   return (
     <div class="border-b border-[#ccc] bg-[#fff] h-[5rem] px-[1rem] flex items-center justify-between">
-      <ShoppingSearch />
+      <ShoppingSearch isHeaderSearch />
       <ShoppingNavigation />
     </div>
   );
 };
 
-export const ShoppingSearch = () => {
+export type ShoppingSearchProps = {
+  isHeaderSearch?: boolean;
+};
+
+export const ShoppingSearch = (props: ShoppingSearchProps) => {
   return (
-    <div class="w-[440px] relative group">
+    <div class={classNames("relative group", props.isHeaderSearch ? "w-[440px]" : "w-[640px]")}>
       <input
         class={classNames(
           "peer rounded-[2px] p-[10px] h-[48px] w-full [outline:0]",
@@ -39,7 +43,7 @@ export const ShoppingSearch = () => {
       <div
         class={classNames(
           "hidden group-focus-within:block peer-placeholder-shown:hidden",
-          "absolute top-[calc(48px+1px)] left-[-2px] w-[40rem] z-50"
+          "absolute top-[calc(48px+1px)] left-[-2px] w-[calc(640px+4px)] z-50"
         )}
         tabIndex={-1}
       >
