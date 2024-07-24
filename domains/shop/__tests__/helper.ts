@@ -1,43 +1,44 @@
 import { dom } from "./deps.ts";
 
-export const defaultTenantTest = "test";
+const defaultHeaders = {
+  "cache-control": "no-transform",
+  "x-tenant": "test",
+};
 
-export type Params = Record<string, string>;
 export type FetchGetParams = {
   url: string;
-  urlParams?: Params;
-  headers?: Record<string, string>;
-};
-export type FetchPostParams = {
-  url: string;
-  urlParams?: Params;
-  bodyParams?: Record<string, unknown>;
+  urlParams?: Record<string, string>;
   headers?: Record<string, string>;
 };
 
-export const fetchGet = ({ url, urlParams, headers }: FetchGetParams) => {
-  const urlWithParams = new URL(url);
-  urlWithParams.search = new URLSearchParams(urlParams).toString();
-  return fetch(urlWithParams, {
+export const fetchGet = (params: FetchGetParams) => {
+  const url = new URL(params.url);
+  url.search = new URLSearchParams(params.urlParams).toString();
+  return fetch(url, {
     method: "GET",
     headers: {
-      "x-tenant": defaultTenantTest,
-      "cache-control": "no-transform",
-      ...headers,
+      ...defaultHeaders,
+      ...params.headers,
     },
   });
 };
 
-export const fetchPost = ({ url, urlParams, bodyParams, headers }: FetchPostParams) => {
-  const urlWithParams = new URL(url);
-  urlWithParams.search = new URLSearchParams(urlParams).toString();
-  return fetch(urlWithParams, {
+export type FetchPostParams = {
+  url: string;
+  urlParams?: Record<string, string>;
+  bodyParams?: Record<string, unknown>;
+  headers?: Record<string, string>;
+};
+
+export const fetchPost = (params: FetchPostParams) => {
+  const url = new URL(params.url);
+  url.search = new URLSearchParams(params.urlParams).toString();
+  return fetch(url, {
     method: "POST",
-    body: JSON.stringify(bodyParams),
+    body: JSON.stringify(params.bodyParams),
     headers: {
-      "x-tenant": defaultTenantTest,
-      "cache-control": "no-transform",
-      ...headers,
+      ...defaultHeaders,
+      ...params.headers,
     },
   });
 };
@@ -58,10 +59,6 @@ export const dropResponse = async (response: Response | Promise<Response>) => {
   return await response.body?.cancel();
 };
 
-export const range = (start: number, end: number): number[] => {
-  return [...Array(end - start).keys()].map((index) => start + index);
-};
-
 export const parseDocument = async (html: string): Promise<dom.Window["document"]> => {
   const window = new dom.Window();
   window.happyDOM.abort();
@@ -70,13 +67,13 @@ export const parseDocument = async (html: string): Promise<dom.Window["document"
   return window.document;
 };
 
-export const $ = (element: dom.Element, selector: string): dom.Element => {
+export const query = (element: dom.Element, selector: string): dom.Element => {
   const result = element.querySelector(selector);
   if (result === null) throwError(`node not found for selector '${selector}'`);
   return result;
 };
 
-export const $$ = (element: dom.Element, selector: string): dom.Element[] => {
+export const queryAll = (element: dom.Element, selector: string): dom.Element[] => {
   const results = element.querySelectorAll(selector);
   if (results.length === 0) throwError(`nodes not found for selector '${selector}'`);
   return results;
@@ -84,4 +81,8 @@ export const $$ = (element: dom.Element, selector: string): dom.Element[] => {
 
 export const throwError = (message: string): never => {
   throw new Error(message);
+};
+
+export const range = (start: number, end: number): number[] => {
+  return [...Array(end - start).keys()].map((index) => start + index);
 };
