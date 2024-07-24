@@ -90,10 +90,11 @@ export const ProductRecommendations = () => {
         )}
       >
         Hast du auch an alles gedacht? Noch mehr passende Produkte für dich:
+        {/* Für diese Produkte interessierten sich auch andere Kunden. */}
       </span>
 
       <div class="relative mx-[60px] flex">
-        <div class="absolute inset-0 mx-[-60px] flex justify-between">
+        <div class="absolute inset-0 mx-[-60px] flex justify-between pointer-events-none">
           <div class="flex items-center justify-center w-[50px]">
             <span class="fill-[#ccc] rotate-180">
               <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
