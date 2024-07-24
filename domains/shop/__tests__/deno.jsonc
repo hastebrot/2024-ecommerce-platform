@@ -4,6 +4,6 @@
     "test:watch": "deno test -A --no-check --watch"
   },
   "test": {
-    "include": ["api/"]
+    "include": ["api/", "ui/"]
   }
 }

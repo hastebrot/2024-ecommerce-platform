@@ -5,7 +5,7 @@ import { ProductActions } from "./FacetedProductList.tsx";
 
 export const ProductDetails = () => {
   return (
-    <div class="flex flex-col bg-[#fff]">
+    <div class="product-details flex flex-col bg-[#fff]">
       <section class="m-[2.5rem_auto_5rem] text-[#4c4c4c] flex flex-wrap max-w-[60rem] w-full">
         <div class="flex-[0_0_50%] max-w-[50%]">
           <ProductMedia />
