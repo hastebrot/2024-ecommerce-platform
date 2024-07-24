@@ -4,10 +4,10 @@
     "specifiers": {
       "npm:@ngneat/falso@7.2.0": "npm:@ngneat/falso@7.2.0",
       "npm:clsx@2.1.1": "npm:clsx@2.1.1",
-      "npm:lucide-preact@0.408.0": "npm:lucide-preact@0.408.0_preact@10.22.1",
-      "npm:nanoid@5.0.5": "npm:nanoid@5.0.5",
-      "npm:preact-render-to-string@6.5.5": "npm:preact-render-to-string@6.5.5_preact@10.22.1",
-      "npm:preact@10.22.1": "npm:preact@10.22.1",
+      "npm:lucide-preact@0.414.0": "npm:lucide-preact@0.414.0_preact@10.23.0",
+      "npm:nanoid@5.0.7": "npm:nanoid@5.0.7",
+      "npm:preact-render-to-string@6.5.6": "npm:preact-render-to-string@6.5.6_preact@10.23.0",
+      "npm:preact@10.23.0": "npm:preact@10.23.0",
       "npm:zod@3.23.8": "npm:zod@3.23.8"
     },
     "npm": {
@@ -22,24 +22,24 @@
         "integrity": "sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==",
         "dependencies": {}
       },
-      "lucide-preact@0.408.0_preact@10.22.1": {
-        "integrity": "sha512-iURiHfJhbJrpo2tWN4a8g7ECrXdQfd5Zl4BVBowSfFw2dwpI7r3mB+noSjZA740l5LkniyiBDDy6Je0sY7bn3g==",
+      "lucide-preact@0.414.0_preact@10.23.0": {
+        "integrity": "sha512-oW3TmbqfA3GS/yUdXiUZQxIXtNLzpRIy8g+LSYE+39Jw3TmW/OhDPivdhVjoxbGC90z0je2oiiVaPOtiW40NhA==",
         "dependencies": {
-          "preact": "preact@10.22.1"
+          "preact": "preact@10.23.0"
         }
       },
-      "nanoid@5.0.5": {
-        "integrity": "sha512-/Veqm+QKsyMY3kqi4faWplnY1u+VuKO3dD2binyPIybP31DRO29bPF+1mszgLnrR2KqSLceFLBNw0zmvDzN1QQ==",
+      "nanoid@5.0.7": {
+        "integrity": "sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==",
         "dependencies": {}
       },
-      "preact-render-to-string@6.5.5_preact@10.22.1": {
-        "integrity": "sha512-KiMFTKNTmT/ccE79BURR/r6XRc2I2TCTZ0MpeWqHW2XnllbeghXvwGsdAfF/MzMilUcTfODtSmMxgoRFL9TM5g==",
+      "preact-render-to-string@6.5.6_preact@10.23.0": {
+        "integrity": "sha512-msFdv7/ooTV6OIodAnU87V4ct+m2DA1rwaRYV+DNvTYpm/ZInQfoGrcHmbTkV7TOcJaHh5wt1NjiALA46Jyxhw==",
         "dependencies": {
-          "preact": "preact@10.22.1"
+          "preact": "preact@10.23.0"
         }
       },
-      "preact@10.22.1": {
-        "integrity": "sha512-jRYbDDgMpIb5LHq3hkI0bbl+l/TQ9UnkdQ0ww+lp+4MMOdqaUYdFc5qeyP+IV8FAd/2Em7drVPeKdQxsiWCf/A==",
+      "preact@10.23.0": {
+        "integrity": "sha512-Pox0jeY4q6PGkFB5AsXni+zHxxx/sAYFIFZzukW4nIpoJLRziRX0xC4WjZENlkSrDQvqVgZcaZzZ/NL8/A+H/w==",
         "dependencies": {}
       },
       "seedrandom@3.0.5": {
@@ -97,10 +97,10 @@
     "dependencies": [
       "npm:@ngneat/falso@7.2.0",
       "npm:clsx@2.1.1",
-      "npm:lucide-preact@0.408.0",
-      "npm:nanoid@5.0.5",
-      "npm:preact-render-to-string@6.5.5",
-      "npm:preact@10.22.1",
+      "npm:lucide-preact@0.414.0",
+      "npm:nanoid@5.0.7",
+      "npm:preact-render-to-string@6.5.6",
+      "npm:preact@10.23.0",
       "npm:zod@3.23.8"
     ]
   }

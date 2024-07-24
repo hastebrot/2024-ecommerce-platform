@@ -17,10 +17,10 @@
     "@ngneat/falso": "npm:@ngneat/falso@7.2.0",
     "@std/": "https://deno.land/std@0.224.0/",
     "clsx": "npm:clsx@2.1.1",
-    "lucide-preact": "npm:lucide-preact@0.408.0",
-    "nanoid": "npm:nanoid@5.0.5",
-    "preact": "npm:preact@10.22.1",
-    "preact-render-to-string": "npm:preact-render-to-string@6.5.5",
+    "lucide-preact": "npm:lucide-preact@0.414.0",
+    "nanoid": "npm:nanoid@5.0.7",
+    "preact": "npm:preact@10.23.0",
+    "preact-render-to-string": "npm:preact-render-to-string@6.5.6",
     "zod": "npm:zod@3.23.8"
   },
   "unstable": [
