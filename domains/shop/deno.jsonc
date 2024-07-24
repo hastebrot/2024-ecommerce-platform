@@ -17,6 +17,7 @@
     "@ngneat/falso": "npm:@ngneat/falso@7.2.0",
     "@std/": "https://deno.land/std@0.224.0/",
     "clsx": "npm:clsx@2.1.1",
+    "happy-dom": "npm:happy-dom@14.12.3",
     "lucide-preact": "npm:lucide-preact@0.414.0",
     "nanoid": "npm:nanoid@5.0.7",
     "preact": "npm:preact@10.23.0",

@@ -20,10 +20,7 @@ export const Zod = {
     return schema.describe(description);
   },
 
-  object<T extends z.ZodRawShape>(
-    description: string,
-    shape: T,
-  ): ReturnType<typeof z.object<T>> {
+  object<T extends z.ZodRawShape>(description: string, shape: T): ReturnType<typeof z.object<T>> {
     return z.object(shape).describe(description);
   },
 };
