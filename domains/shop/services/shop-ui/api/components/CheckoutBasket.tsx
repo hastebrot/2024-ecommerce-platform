@@ -403,7 +403,7 @@ export type BasketLineItemAmountProps = {
 export const BasketLineItemAmount = (props: BasketLineItemAmountProps) => {
   const iconTrash = (
     <span class="flex items-center justify-center w-[40px] h-[40px]">
-      <icons.Trash2 class="w-[20px] h-[20px] shrink-0 [stroke-width:calc(2px*24/20)]" />
+      <icons.Trash2 class="w-[20px] h-[20px] shrink-0 [stroke-width:calc(1.5px*24/20)]" />
     </span>
   );
   const iconMinus = (

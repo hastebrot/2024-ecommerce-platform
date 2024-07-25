@@ -14,11 +14,14 @@ Deno.test("fetch product-listing", async () => {
   const document = await parseDocument(html);
 
   // then:
+  const title = query(document.body, "title");
+  assert.assertEquals(title.textContent, "product-listing · shop-ui");
+
   const products = queryAll(document.body, ".product");
   assert.assertEquals(products.length, 6);
 
-  const p = products[0];
-  assert.assertEquals(query(p, ".product-details h4").textContent, "Bio Banane ca. 200g");
+  const h4 = query(products[0], ".product-details h4");
+  assert.assertEquals(h4.textContent, "Bio Banane ca. 200g");
 });
 
 Deno.test("fetch product-details", async () => {
@@ -32,6 +35,9 @@ Deno.test("fetch product-details", async () => {
   const document = await parseDocument(html);
 
   // then:
-  const p = query(document.body, ".product-details");
-  assert.assertEquals(query(p, "h1").textContent, "Heidelbeeren 500g");
+  const title = query(document.body, "title");
+  assert.assertEquals(title.textContent, "product-details · shop-ui");
+
+  const h1 = query(document.body, ".product-details h1");
+  assert.assertEquals(h1.textContent, "Heidelbeeren 500g");
 });
