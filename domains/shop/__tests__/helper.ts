@@ -2,7 +2,6 @@ import { dom } from "./deps.ts";
 
 const defaultHeaders = {
   "cache-control": "no-transform",
-  "x-tenant": "test",
 };
 
 export type FetchGetParams = {
@@ -68,13 +67,15 @@ export const parseDocument = async (html: string): Promise<dom.Window["document"
 };
 
 export const query = (element: dom.Element, selector: string): dom.Element => {
+  element ?? throwError("query: element is null");
   const result = element.querySelector(selector);
-  return result ?? throwError(`node not found for selector '${selector}'`);
+  return result ?? throwError(`query: node not found for selector '${selector}'`);
 };
 
 export const queryAll = (element: dom.Element, selector: string): dom.Element[] => {
+  element ?? throwError("queryAll: element is null");
   const results = element.querySelectorAll(selector);
-  if (results.length === 0) throwError(`nodes not found for selector '${selector}'`);
+  if (results.length === 0) throwError(`queryAll: nodes not found for selector '${selector}'`);
   return results;
 };
 

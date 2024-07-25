@@ -1,8 +1,7 @@
 import { CatalogClient } from "./client.ts";
 import { Fmt, Json } from "./helper.ts";
 
-const defaultTenant = "int";
-
+const workspaceHeader = "X-Workspace";
 const responseHeaders = {
   "Content-Type": "application/json;charset=utf-8",
 };
@@ -29,7 +28,9 @@ export const apiHandler = async (req: Request): Promise<Response> => {
 };
 
 const transformHeadersToContext = (headers: Headers) => {
+  const defaultWorkspace = "default";
+
   return {
-    "X-Tenant": headers.get("X-Tenant") ?? defaultTenant,
+    [workspaceHeader]: headers.get(workspaceHeader) ?? defaultWorkspace,
   };
 };

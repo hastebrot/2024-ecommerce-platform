@@ -3,13 +3,14 @@ import { consumeJson, fetchPost } from "../helper.ts";
 
 const apiGatewayAddr = "localhost:8080";
 const catalogAddr = "localhost:8081";
+const testWorkspace = "test";
 
 Deno.test("api-gateway echo", async () => {
   // when:
   const res = await fetchPost({
     url: `http://${apiGatewayAddr}/api/catalog/echo`,
     headers: {
-      "x-tenant": "test",
+      "x-workspace": testWorkspace,
     },
     bodyParams: {
       message: "hello",
@@ -30,7 +31,7 @@ Deno.test("catalog echo", async () => {
   const res = await fetchPost({
     url: `http://${catalogAddr}/echo`,
     headers: {
-      "x-tenant": "test",
+      "x-workspace": testWorkspace,
     },
     bodyParams: {
       message: "hello",

@@ -1,11 +1,11 @@
 import { Json, throwError, Zod } from "./helper.ts";
 import { EchoRequest, EchoResponse } from "./model.ts";
 
+const apiMethod = "POST";
+const workspaceHeader = "X-Workspace";
 const responseHeaders = {
   "Content-Type": "application/json;charset=utf-8",
 };
-
-const apiMethod = "POST";
 
 export const apiHandler = async (req: Request): Promise<Response> => {
   const url = new URL(req.url);
@@ -25,6 +25,6 @@ export const apiHandler = async (req: Request): Promise<Response> => {
 
 const transformHeadersToContext = (headers: Headers) => {
   return {
-    tenant: headers.get("X-Tenant") ?? throwError(`X-Tenant is missing"`),
+    workspace: headers.get(workspaceHeader) ?? throwError(`workspace is missing"`),
   };
 };

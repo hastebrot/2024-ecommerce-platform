@@ -5,6 +5,7 @@ import { Breadcrumbs } from "../components/Breadcrumbs.tsx";
 import { CategoriesNavigation } from "../components/CategoriesNavigation.tsx";
 import { Footer } from "../components/Footer.tsx";
 import { Header } from "../components/Header.tsx";
+import { Page } from "../components/Page.tsx";
 import {
   FooterNewsletter,
   ProductDetails,
@@ -15,7 +16,9 @@ import { ShoppingHeader } from "../components/ShoppingHeader.tsx";
 // deno-lint-ignore require-await
 export const handleProductDetails = async (_ctx: Context, _req: Request): Promise<Response> => {
   const html = renderToString(
-    <div class="bg-[#fbfaf9] [font-stretch:95%]">
+    <Page>
+      <title hx-swap-oob="innerHTML:title">product-details &middot; shop-ui</title>
+
       {/* header. */}
       <Header />
       <ShoppingHeader />
@@ -29,7 +32,7 @@ export const handleProductDetails = async (_ctx: Context, _req: Request): Promis
       {/* footer. */}
       <FooterNewsletter />
       <Footer />
-    </div>
+    </Page>
   );
 
   return new Response(html, {

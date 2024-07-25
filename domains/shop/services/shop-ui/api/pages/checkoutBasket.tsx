@@ -6,11 +6,14 @@ import {
   CheckoutHeader,
   CheckoutPageContent,
 } from "../components/CheckoutBasket.tsx";
+import { Page } from "../components/Page.tsx";
 
 // deno-lint-ignore require-await
 export const handleCheckoutBasket = async (_ctx: Context, _req: Request): Promise<Response> => {
   const html = renderToString(
-    <div class="bg-[#fbfaf9] [font-stretch:95%]">
+    <Page>
+      <title hx-swap-oob="innerHTML:title">checkout-basket &middot; shop-ui</title>
+
       {/* header. */}
       <CheckoutHeader />
 
@@ -19,7 +22,7 @@ export const handleCheckoutBasket = async (_ctx: Context, _req: Request): Promis
 
       {/* footer. */}
       <CheckoutFooter />
-    </div>
+    </Page>
   );
 
   return new Response(html, {
