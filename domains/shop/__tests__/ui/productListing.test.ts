@@ -6,7 +6,7 @@ const shopUiAddr = "localhost:8082";
 Deno.test("fetch product-listing", async () => {
   // when:
   const res = await fetchGet({
-    url: `http://${shopUiAddr}/site`,
+    url: `http://${shopUiAddr}/ui/site`,
     urlParams: { page: "product-listing" },
   });
   assert.assertEquals(res.status, 200);
@@ -24,7 +24,7 @@ Deno.test("fetch product-listing", async () => {
 Deno.test("fetch product-details", async () => {
   // when:
   const res = await fetchGet({
-    url: `http://${shopUiAddr}/site`,
+    url: `http://${shopUiAddr}/ui/site`,
     urlParams: { page: "product-details" },
   });
   assert.assertEquals(res.status, 200);

@@ -14,7 +14,7 @@ export const apiHandler = async (req: Request): Promise<Response> => {
 
   // catalog service.
 
-  if (req.method === "POST" && url.pathname === "/catalog/echo") {
+  if (req.method === "POST" && url.pathname === "/api/catalog/echo") {
     const params = await req.json();
     const result = await CatalogClient.echo(params, context);
     const time = Fmt.millis(performance.now() - start);

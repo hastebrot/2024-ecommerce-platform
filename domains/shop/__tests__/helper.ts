@@ -69,8 +69,7 @@ export const parseDocument = async (html: string): Promise<dom.Window["document"
 
 export const query = (element: dom.Element, selector: string): dom.Element => {
   const result = element.querySelector(selector);
-  if (result === null) throwError(`node not found for selector '${selector}'`);
-  return result;
+  return result ?? throwError(`node not found for selector '${selector}'`);
 };
 
 export const queryAll = (element: dom.Element, selector: string): dom.Element[] => {

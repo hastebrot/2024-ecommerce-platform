@@ -48,7 +48,7 @@ export const handleIndex = async (ctx: Context, req: Request): Promise<Response>
         <div class="hidden">
           <div
             // Trigger browser refresh after development webserver changes using endpoint polling.
-            hx-get={`/site-refresh?timestamp=${ctx.serverTimestamp}`}
+            hx-get={`/ui/site-refresh?timestamp=${ctx.serverTimestamp}`}
             hx-trigger={`every ${siteRefreshMillis}ms`}
             hx-swap="none swap:0s settle:0s"
           ></div>
@@ -56,7 +56,7 @@ export const handleIndex = async (ctx: Context, req: Request): Promise<Response>
         <main
           class="relative grid w-full h-full"
           hx-ext="morph"
-          hx-get={`/site?page=${pageParam}`}
+          hx-get={`/ui/site?page=${pageParam}`}
           hx-trigger="load"
           hx-swap="innerHTML"
         ></main>

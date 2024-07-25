@@ -4,7 +4,7 @@ import { z, Zod } from "./helper.ts";
 
 export const EchoRequest = Zod.schema(
   "EchoRequest",
-  z.lazy(() => Echo),
+  z.lazy(() => Echo)
 );
 
 export const EchoResponse = Zod.schema(
@@ -12,7 +12,7 @@ export const EchoResponse = Zod.schema(
   z.object({
     ok: z.boolean(),
     result: z.lazy(() => Echo),
-  }),
+  })
 );
 
 // MESSAGES.
