@@ -7,7 +7,7 @@ const catalogAddr = "localhost:8081";
 Deno.test("api-gateway echo", async () => {
   // when:
   const res = await fetchPost({
-    url: `http://${apiGatewayAddr}/catalog/echo`,
+    url: `http://${apiGatewayAddr}/api/catalog/echo`,
     headers: {
       "x-tenant": "test",
     },
