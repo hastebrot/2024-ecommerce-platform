@@ -1,7 +1,7 @@
 /** @jsx createElement */
 import { icons, LucideIcon } from "lucide-preact";
 import { classNames, ComponentChildren, createElement } from "../../helper/jsx.ts";
-import { HeaderHomepage } from "../components/Header.tsx";
+import { HeaderHomepage } from "./Header.tsx";
 import { ProductRecommendations } from "./ProductDetails.tsx";
 import { ShoppingSearch } from "./ShoppingHeader.tsx";
 
@@ -159,16 +159,38 @@ export const BasketOverviewList = () => {
         </div>
       </header>
 
+      <div>
+        <BasketNotificationContainer>
+          <BasketNotificationInfo />
+        </BasketNotificationContainer>
+
+        <BasketNotificationLineItems>
+          <BasketLineItem
+            productTitle="Pfanner Multivitamin ACE 1,5l"
+            productOfferDuration="noch 2 Tage"
+            hasNotAvailableText
+          />
+          <BasketLineItem
+            productTitle="Pfanner Multivitamin ACE 1,5l"
+            productOfferDuration="noch 2 Tage"
+            depositLabel="(EINWEG)"
+            hasNotAvailableText
+          />
+        </BasketNotificationLineItems>
+      </div>
+
       <div class="p-[24px]">
         <div>
           <BasketLineItemListHeader title="Getränke & Genussmittel" amount={1} />
           <BasketLineItemListHeader amount={1} />
           <BasketLineItem
-            productTitle="Pfanner Multivitamin ACE 1,5l"
-            conditions="(EINWEG)"
-            productPrice="1,89 €"
-            totalPrice="1,89 €"
+            productTitle="Rotkäppchen Sekt trocken 0,75l"
+            productPrice="3,29 €"
+            totalPrice="3,29 €"
             amount={1}
+            isProductOffer
+            productOfferDuration="noch 2 Tage"
+            hasAgeVerificationText
           />
         </div>
         <div>
@@ -188,6 +210,52 @@ export const BasketOverviewList = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+type BasketNotificationContainerProps = {
+  children?: ComponentChildren;
+};
+
+const BasketNotificationContainer = (props: BasketNotificationContainerProps) => {
+  return <div class="pt-[16px] px-[24px] flex flex-col gap-[16px]">{props.children}</div>;
+};
+
+const BasketNotificationInfo = () => {
+  return (
+    <div class="flex items-center bg-[#e7eff8] text-[#2a63c4] p-[16px] rounded-[16px] gap-[8px]">
+      <span class="flex items-center justify-center w-[24px] h-[24px] shrink-0">
+        <icons.Info class="w-[20px] h-[20px] shrink-0 [stroke-width:calc(2px*24/20)]" />
+      </span>
+      <span class="font-[500] text-[16px] leading-[24px]">
+        In deinem Warenkorb haben sich Verfügbarkeiten verändert.
+      </span>
+    </div>
+  );
+};
+
+type BasketNotificationLineItemsProps = {
+  children?: ComponentChildren;
+};
+
+const BasketNotificationLineItems = (props: BasketNotificationLineItemsProps) => {
+  return (
+    <div class="pt-[48px] px-[24px]">
+      <div class="p-[16px] rounded-[16px] bg-[#f1f1f1] text-[#1c1c1c]">
+        <div class="flex items-center justify-between">
+          <h4 class="font-[700] text-[24px] leading-[32px] text-[#1c1c1c]">
+            Nicht verfügbare Produkte
+          </h4>
+          <div class="inline-flex">
+            <BasketButton type="secondary" iconBefore={icons.Trash2}>
+              Alle löschen
+            </BasketButton>
+          </div>
+        </div>
+
+        <div>{props.children}</div>
+      </div>
+    </div>
   );
 };
 
@@ -233,45 +301,86 @@ export const BasketLineItemListHeader = (props: BasketLineItemListHeaderProps) =
 
 export type BasketLineItemProps = {
   productTitle: string;
-  productPrice: string;
-  totalPrice: string;
-  amount: number;
-  conditions?: string;
+  productPrice?: string;
+  totalPrice?: string;
+  amount?: number;
+  depositLabel?: string;
+  isProductOffer?: boolean;
+  productOfferDuration?: string;
+  hasNotAvailableText?: boolean;
+  hasAgeVerificationText?: boolean;
 };
 
-export const BasketLineItem = (props: BasketLineItemProps) => {
-  return (
-    <article
-      class={classNames(
-        "min-h-[108px] w-full py-[16px] grid grid-cols-[auto_94px_94px] items-center",
-        "border-t border-[#ccc] first-of-type:border-none"
-      )}
-    >
-      <div class="flex items-center">
-        <BasketLineItemImage />
-        <div class="flex flex-col mx-[16px]">
-          <a class="font-[500] text-[16px] leading-[24px] text-[#1c1c1c] truncate">
-            {props.productTitle}
-          </a>
-          {props.conditions && (
-            <span class="font-[400] text-[16px] leading-[1.15] text-[#1c1c1c]">
-              {props.conditions}
+export const BasketLineItem = (props: BasketLineItemProps) => (
+  <article
+    class={classNames(
+      "min-h-[108px] w-full py-[16px] grid grid-cols-[auto_94px_94px] items-center",
+      "border-t border-[#ccc] first-of-type:border-none"
+    )}
+  >
+    <div class="flex items-center">
+      <BasketLineItemImage />
+
+      <div class="basket-line-item-description flex flex-col mx-[16px]">
+        <a class="font-[500] text-[16px] leading-[24px] text-[#1c1c1c] truncate">
+          {props.productTitle}
+        </a>
+
+        <div>
+          {props.depositLabel && (
+            <span class="font-[400] text-[16px] leading-[1.15] text-[#1c1c1c] inline-block pr-[8px]">
+              {props.depositLabel}
+            </span>
+          )}
+
+          {props.productOfferDuration && (
+            <span class="font-[500] text-[14px] leading-[20px] text-[#cc071e]">
+              {props.productOfferDuration}
             </span>
           )}
         </div>
+
+        {props.hasNotAvailableText && (
+          <div>
+            <span class="font-[500] text-[14px] leading-[20px] text-[#0065cb]">
+              Das Produkt ist nicht mehr verfügbar.
+            </span>
+          </div>
+        )}
+
+        {props.hasAgeVerificationText && (
+          <div class="pt-[8px]">
+            <BasketAgeVerificationInformation />
+          </div>
+        )}
+      </div>
+
+      {props.amount && (
         <div class="flex-1 text-end">
           <BasketLineItemAmount amount={props.amount} />
         </div>
-      </div>
-      <span class="text-right font-[500] text-[16px] leading-[24px] text-[#1c1c1c]">
-        {props.productPrice}
-      </span>
-      <span class="text-right font-[500] text-[16px] leading-[24px] text-[#1c1c1c]">
-        {props.totalPrice}
-      </span>
-    </article>
-  );
-};
+      )}
+    </div>
+
+    <span
+      class={classNames(
+        "text-right font-[500] text-[16px] leading-[24px] text-[#1c1c1c]",
+        props.isProductOffer && "text-[#cc071e]"
+      )}
+    >
+      {props.productPrice}
+    </span>
+
+    <span
+      class={classNames(
+        "text-right font-[500] text-[16px] leading-[24px] text-[#1c1c1c]",
+        props.isProductOffer && "text-[#cc071e]"
+      )}
+    >
+      {props.totalPrice}
+    </span>
+  </article>
+);
 
 export const BasketLineItemImage = () => {
   return (
@@ -322,7 +431,7 @@ export const BasketLineItemAmount = (props: BasketLineItemAmountProps) => {
 
       <input
         class={classNames(
-          "w-[40px] h-[40px] border-y-[0.633333px] border-[#949494] p-[8px]",
+          "w-[40px] h-[40px] border-y-[0.633333px] border-[#949494] p-[8px] bg-inherit",
           "font-[500] text-[16px] leading-[1.1] text-center",
           "outline-2 outline-offset-[-2px] outline-[#1c1c1c]",
           "hover:bg-[#f1f1f1] hover:outline hover:z-10",
@@ -343,6 +452,25 @@ export const BasketLineItemAmount = (props: BasketLineItemAmountProps) => {
       >
         {iconPlus}
       </button>
+    </div>
+  );
+};
+
+const BasketAgeVerificationInformation = () => {
+  return (
+    <div class="age-verification-information">
+      {/* text. */}
+      <div class="font-[500] text-[16px] leading-[24px] text-[#cc071e]">
+        Bestellung ab 18 Jahren.
+      </div>
+
+      {/* subtext. */}
+      <div class="mt-[4px] font-[400] text-[14px] leading-[20px] text-[#676767]">
+        Für dieses Produkt gilt das{" "}
+        <a class="font-[500] text-[#676767] hover:text-[#1c1c1c] underline cursor-pointer">
+          Jugendschutzgesetz
+        </a>
+      </div>
     </div>
   );
 };
@@ -427,7 +555,7 @@ export const BasketButton = (props: BasketButtonProps) => {
         "rounded-[8px] cursor-pointer whitespace-nowrap",
         props.type === "primary" && "bg-[#cc071e] text-[#fff] hover:bg-[#9e0012]",
         props.type === "secondary" && [
-          "bg-transparent text-[#1c1c1c] [box-shadow:inset_0_0_0_2px_#1c1c1c]",
+          "bg-[#fff] text-[#1c1c1c] [box-shadow:inset_0_0_0_2px_#1c1c1c]",
           "hover:bg-[rgba(0,0,0,0.07)]",
         ]
       )}
