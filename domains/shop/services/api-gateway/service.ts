@@ -11,7 +11,7 @@ if (import.meta.main) {
     onListen() {
       Log.debug("http server running", { domainName, serviceName, apiPort });
     },
-    handler: async (req: Request) => {
+    async handler(req: Request) {
       Log.debug("request", { url: req.url });
       return await apiHandler(req);
     },

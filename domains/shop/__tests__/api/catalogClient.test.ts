@@ -1,5 +1,5 @@
 import { assert } from "../deps.ts";
-import { consumeJson, fetchPost } from "../helper.ts";
+import { consumeJson, fetchPost } from "../test.ts";
 
 const apiGatewayAddr = "localhost:8080";
 const catalogAddr = "localhost:8081";

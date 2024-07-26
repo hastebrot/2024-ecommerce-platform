@@ -1,1 +1,3 @@
-// empty.
+export const CatalogClient = {
+  async readProducts() {},
+};
