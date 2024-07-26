@@ -6,14 +6,23 @@ const serviceName = "catalog";
 const apiPort = Env.integerOrThrow("PORT");
 
 if (import.meta.main) {
-  Deno.serve({
+  const kv = await Deno.openKv("./denokv.sqlite");
+  const http = Deno.serve({
     port: apiPort,
     onListen() {
       Log.debug("http server running", { domainName, serviceName, apiPort });
     },
-    handler: async (req: Request) => {
+    async handler(req: Request) {
       Log.debug("request", { url: req.url });
-      return await apiHandler(req);
+      return await apiHandler({ kv }, req);
     },
   });
+
+  const handleShutdown = async () => {
+    await http[Symbol.asyncDispose]();
+    kv[Symbol.dispose]();
+    Deno.exit();
+  };
+  Deno.addSignalListener("SIGINT", handleShutdown);
+  Deno.addSignalListener("SIGTERM", handleShutdown);
 }

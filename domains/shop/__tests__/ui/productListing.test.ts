@@ -1,5 +1,5 @@
 import { assert } from "../deps.ts";
-import { fetchGet, parseDocument, query, queryAll } from "../helper.ts";
+import { fetchGet, parseDocument, query, queryAll } from "../test.ts";
 
 const shopUiAddr = "localhost:8082";
 

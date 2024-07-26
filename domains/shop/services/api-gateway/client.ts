@@ -1,23 +1,43 @@
 import { Json } from "./helper.ts";
+import { ClientContext } from "./model.ts";
 
 const apiMethod = "POST";
 const catalogAddr = "localhost:8081";
-
-type Params = unknown;
-type Context = Record<string, string>;
 
 const requestHeaders = {
   "Content-Type": "application/json;charset=utf-8",
   "Cache-Control": "no-transform",
 };
 
-export const CatalogClient = {
-  async echo(params: Params, context?: Context) {
+type Input = unknown;
+
+export const CatalogServiceClient = {
+  async echo(ctx: ClientContext, input: Input) {
     const url = new URL(`http://${catalogAddr}/echo`);
     const res = await fetch(url, {
       method: apiMethod,
-      body: Json.write(params),
-      headers: { ...requestHeaders, ...context },
+      body: Json.write(input),
+      headers: { ...requestHeaders, ...ctx.headers },
+    });
+    return await res.json();
+  },
+
+  async writeProduct(ctx: ClientContext, input: Input) {
+    const url = new URL(`http://${catalogAddr}/write-product`);
+    const res = await fetch(url, {
+      method: apiMethod,
+      body: Json.write(input),
+      headers: { ...requestHeaders, ...ctx.headers },
+    });
+    return await res.json();
+  },
+
+  async readProducts(ctx: ClientContext, input: Input) {
+    const url = new URL(`http://${catalogAddr}/read-products`);
+    const res = await fetch(url, {
+      method: apiMethod,
+      body: Json.write(input),
+      headers: { ...requestHeaders, ...ctx.headers },
     });
     return await res.json();
   },
