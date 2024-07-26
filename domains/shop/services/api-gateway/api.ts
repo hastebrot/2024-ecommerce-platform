@@ -1,5 +1,6 @@
-import { CatalogClient } from "./client.ts";
+import { CatalogServiceClient } from "./client.ts";
 import { Fmt, Json } from "./helper.ts";
+import { ClientContext } from "./model.ts";
 
 const workspaceHeader = "X-Workspace";
 const responseHeaders = {
@@ -7,18 +8,34 @@ const responseHeaders = {
 };
 
 export const apiHandler = async (req: Request): Promise<Response> => {
-  const start = performance.now();
+  const startTime = performance.now();
   const url = new URL(req.url);
-  const context = transformHeadersToContext(req.headers);
+  const ctx = transformToClientContext(req.headers);
 
   // catalog service.
 
   if (req.method === "POST" && url.pathname === "/api/catalog/echo") {
-    const params = await req.json();
-    const result = await CatalogClient.echo(params, context);
-    const time = Fmt.millis(performance.now() - start);
-    const size = Fmt.bytes(Json.write(result).length);
-    return new Response(Json.write({ ...result, time, size }), {
+    const input = await req.json();
+    const output = await CatalogServiceClient.echo(ctx, input);
+    return new Response(writeJson(output, startTime), {
+      status: 200,
+      headers: responseHeaders,
+    });
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/catalog/write-product") {
+    const input = await req.json();
+    const output = await CatalogServiceClient.writeProduct(ctx, input);
+    return new Response(writeJson(output, startTime), {
+      status: 200,
+      headers: responseHeaders,
+    });
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/catalog/read-products") {
+    const input = await req.json();
+    const output = await CatalogServiceClient.readProducts(ctx, input);
+    return new Response(writeJson(output, startTime), {
       status: 200,
       headers: responseHeaders,
     });
@@ -27,10 +44,17 @@ export const apiHandler = async (req: Request): Promise<Response> => {
   return new Response(null, { status: 404 });
 };
 
-const transformHeadersToContext = (headers: Headers) => {
+const transformToClientContext = (headers: Headers): ClientContext => {
   const defaultWorkspace = "default";
-
   return {
-    [workspaceHeader]: headers.get(workspaceHeader) ?? defaultWorkspace,
+    headers: {
+      [workspaceHeader]: headers.get(workspaceHeader) ?? defaultWorkspace,
+    },
   };
+};
+
+const writeJson = (output: object, startTime: number) => {
+  const time = Fmt.millis(performance.now() - startTime);
+  const size = Fmt.bytes(Json.write(output).length);
+  return Json.write({ ...output, time, size });
 };
