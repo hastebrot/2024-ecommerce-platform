@@ -1,12 +1,17 @@
 /** @jsx createElement */
 import { icons, LucideIcon } from "lucide-preact";
 import { classNames, ComponentChildren, createElement } from "../../helper/jsx.ts";
+import * as model from "../../model.ts";
 
-export const FacetedProductList = () => {
+export type FacetedProductListProps = {
+  products: model.Product[];
+};
+
+export const FacetedProductList = (props: FacetedProductListProps) => {
   return (
     <div class="flex px-[15px] bg-[#fff]">
       <FacetList />
-      <PageableProductList />
+      <PageableProductList products={props.products} />
     </div>
   );
 };
@@ -252,53 +257,25 @@ export const FacetGroupResetButton = (props: FacetGroupResetButtonProps) => {
   );
 };
 
-export const PageableProductList = () => {
+export type PageableProductListProps = {
+  products: model.Product[];
+};
+
+export const PageableProductList = (props: PageableProductListProps) => {
   return (
     <div class="w-full flex flex-col">
       <QuickFacetChips />
       <ProductList>
         <ProductTiles>
-          <Product
-            productTitle="Bio Banane ca. 200g"
-            productGrammage="1 Stück"
-            productPrice="0,00 €"
-            amount={0}
-          />
-          <Product
-            productTitle="Heidelbeeren 500g"
-            productGrammage="1 Stück"
-            productPrice="0,00 €"
-            badge="sponsored"
-            amount={1}
-          />
-          <Product
-            productTitle="Bio Joghurt mild 3,8% 500g"
-            productGrammage="1 Stück"
-            productOfferDuration="bis 01.02.2023"
-            productOfferPrice="0,00 €"
-            badge="sponsored"
-            amount={2}
-          />
-          <Product
-            productTitle="Eisbergsalat 1 Stück"
-            productGrammage="1 Stück"
-            productPrice="0,00 €"
-            amount={0}
-          />
-          <Product
-            productTitle="Honigmelone 1 Stück"
-            productGrammage="1 Stück"
-            productPrice="0,00 €"
-            badge="lowestPrice"
-            amount={0}
-          />
-          <Product
-            productTitle="Bio Erdbeeren 300g"
-            productGrammage="1 Stück"
-            productPrice="0,00 €"
-            badge="regional"
-            amount={0}
-          />
+          {props.products.map((product) => (
+            <Product
+              key={product.id}
+              productTitle={product.productTitle}
+              productGrammage="1 Stück"
+              productPrice="0,00 €"
+              amount={0}
+            />
+          ))}
         </ProductTiles>
       </ProductList>
     </div>

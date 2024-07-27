@@ -1,4 +1,5 @@
 /** @jsx createElement */
+import { CatalogClient } from "../../client.ts";
 import { createElement, renderToString } from "../../helper/jsx.ts";
 import { Context } from "../../model.ts";
 import { Breadcrumbs } from "../components/Breadcrumbs.tsx";
@@ -10,8 +11,9 @@ import { Header } from "../components/Header.tsx";
 import { Page } from "../components/Page.tsx";
 import { ShoppingHeader } from "../components/ShoppingHeader.tsx";
 
-// deno-lint-ignore require-await
 export const handleProductListing = async (_ctx: Context, _req: Request): Promise<Response> => {
+  const products = await CatalogClient.readProducts();
+
   const html = renderToString(
     <Page>
       <title hx-swap-oob="innerHTML:title">product-listing &middot; shop-ui</title>
@@ -24,7 +26,7 @@ export const handleProductListing = async (_ctx: Context, _req: Request): Promis
       {/* page content. */}
       <Breadcrumbs />
       <DisplayOptions />
-      <FacetedProductList />
+      <FacetedProductList products={products.result.products} />
 
       {/* footer. */}
       <Footer />
