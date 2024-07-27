@@ -11,7 +11,6 @@ import {
   WriteProductResponse,
 } from "./model.ts";
 
-const apiMethod = "POST";
 const workspaceHeader = "X-Workspace";
 const responseHeaders = {
   "Content-Type": "application/json;charset=utf-8",
@@ -21,31 +20,40 @@ export const apiHandler = async (serviceCtx: ServiceContext, req: Request): Prom
   const url = new URL(req.url);
   const ctx = transformToClientContext(serviceCtx, req.headers);
 
-  if (req.method === apiMethod && url.pathname === "/echo") {
+  if (req.method === "POST" && url.pathname === "/echo") {
     const input = Zod.parse(EchoRequest, await req.json());
-    const output = Zod.parse(EchoResponse, {
+    const output = Zod.parseTyped(EchoResponse, {
       ok: true,
       result: { message: input.message },
     });
-    return new Response(Json.write(output), { status: 200, headers: responseHeaders });
+    return new Response(Json.write(output), {
+      status: 200,
+      headers: responseHeaders,
+    });
   }
 
-  if (req.method === apiMethod && url.pathname === "/write-product") {
+  if (req.method === "POST" && url.pathname === "/write-product") {
     const input = Zod.parse(WriteProductRequest, await req.json());
-    const output = Zod.parse<unknown, unknown>(
+    const output = Zod.parseTyped(
       WriteProductResponse,
       await ProductStoreClient.writeProduct(ctx, input)
     );
-    return new Response(Json.write(output), { status: 200, headers: responseHeaders });
+    return new Response(Json.write(output), {
+      status: 200,
+      headers: responseHeaders,
+    });
   }
 
-  if (req.method === apiMethod && url.pathname === "/read-products") {
+  if (req.method === "POST" && url.pathname === "/read-products") {
     const input = Zod.parse(ReadProductsRequest, await req.json());
-    const output = Zod.parse<unknown, unknown>(
+    const output = Zod.parseTyped(
       ReadProductsResponse,
       await ProductStoreClient.readProducts(ctx, input)
     );
-    return new Response(Json.write(output), { status: 200, headers: responseHeaders });
+    return new Response(Json.write(output), {
+      status: 200,
+      headers: responseHeaders,
+    });
   }
 
   return new Response(null, { status: 404 });

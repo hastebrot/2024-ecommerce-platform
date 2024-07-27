@@ -45,7 +45,7 @@ export const fetchPost = (params: FetchPostParams) => {
 export const consumeJson = async <T>(response: Response | Promise<Response>): Promise<T> => {
   response = await response;
   if (response.status >= 400) {
-    throw Error(`http error, code='${response.status}'`);
+    throwError(`http error, code='${response.status}'`);
   }
   return await response.json();
 };
@@ -53,7 +53,7 @@ export const consumeJson = async <T>(response: Response | Promise<Response>): Pr
 export const dropResponse = async (response: Response | Promise<Response>) => {
   response = await response;
   if (response.status >= 400) {
-    throw Error(`http error, code='${response.status}'`);
+    throwError(`http error, code='${response.status}'`);
   }
   return await response.body?.cancel();
 };
