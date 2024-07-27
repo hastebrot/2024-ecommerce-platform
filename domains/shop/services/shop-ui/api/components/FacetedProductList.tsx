@@ -262,20 +262,37 @@ export type PageableProductListProps = {
 };
 
 export const PageableProductList = (props: PageableProductListProps) => {
+  const transformToBadge = (product: model.Product) => {
+    const badgeMap = new Map([
+      ["gesponsert", "sponsored" as const],
+      ["tiefpreis", "lowestPrice" as const],
+      ["regional", "regional" as const],
+    ]);
+    for (const attribute of product.attributeList) {
+      if (badgeMap.has(attribute.id)) {
+        return badgeMap.get(attribute.id);
+      }
+    }
+    return undefined;
+  };
+
   return (
     <div class="w-full flex flex-col">
       <QuickFacetChips />
       <ProductList>
         <ProductTiles>
-          {props.products.map((product) => (
-            <Product
-              key={product.id}
-              productTitle={product.productTitle}
-              productGrammage="1 Stück"
-              productPrice="0,00 €"
-              amount={0}
-            />
-          ))}
+          {props.products.map((product) => {
+            return (
+              <Product
+                key={product.productNumber}
+                productTitle={product.productTitle}
+                productGrammage="1 Stück"
+                productPrice="0,00 €"
+                amount={0}
+                badge={transformToBadge(product)}
+              />
+            );
+          })}
         </ProductTiles>
       </ProductList>
     </div>

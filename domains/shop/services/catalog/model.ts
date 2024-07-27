@@ -30,10 +30,12 @@ export const WriteProductRequest = Zod.object("WriteProductRequest", {
 
 export const WriteProductResponse = Zod.object("WriteProductResponse", {
   ok: z.boolean(),
-  id: z.string(),
 });
 
-export const ReadProductsRequest = Zod.object("ReadProductsRequest", {});
+export const ReadProductsRequest = Zod.object("ReadProductsRequest", {
+  category: z.string().nullable().optional(),
+  attributes: z.array(z.string()).optional(),
+});
 
 export const ReadProductsResponse = Zod.object("ReadProductsResponse", {
   ok: z.boolean(),
@@ -54,8 +56,20 @@ export const Echo = z.object({
 
 export type Product = z.infer<typeof Product>;
 export const Product = Zod.object("Product", {
-  id: z.string(),
+  productNumber: z.string(),
   productTitle: z.string(),
+  categoryPath: z.array(
+    z.object({
+      id: z.string(),
+      category: z.string(),
+    })
+  ),
+  attributeList: z.array(
+    z.object({
+      id: z.string(),
+      attribute: z.string(),
+    })
+  ),
   createdDate: z.string().optional(),
   lastModifiedDate: z.string().optional(),
 });
