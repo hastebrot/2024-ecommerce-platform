@@ -1,4 +1,3 @@
-import { nanoid } from "../deps.ts";
 import { consumeJson, fetchPost } from "../test.ts";
 
 const apiGatewayAddr = "localhost:8080";
@@ -7,27 +6,27 @@ const demoWorkspace = "demo";
 Deno.test("demo write products", async () => {
   const products = [
     {
-      id: nanoid.nanoid(),
+      id: "1",
       productTitle: "Bio Banane ca. 200g",
     },
     {
-      id: nanoid.nanoid(),
+      id: "2",
       productTitle: "Heidelbeeren 500g",
     },
     {
-      id: nanoid.nanoid(),
+      id: "3",
       productTitle: "Bio Joghurt mild 3,8% 500g",
     },
     {
-      id: nanoid.nanoid(),
+      id: "4",
       productTitle: "Eisbergsalat 1 Stück",
     },
     {
-      id: nanoid.nanoid(),
+      id: "5",
       productTitle: "Honigmelone 1 Stück",
     },
     {
-      id: nanoid.nanoid(),
+      id: "6",
       productTitle: "Bio Erdbeeren 300g",
     },
   ];

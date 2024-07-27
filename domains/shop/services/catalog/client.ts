@@ -16,12 +16,8 @@ export const ProductStoreClient = {
 
   async readProducts(ctx: ClientContext, _params: z.infer<typeof ReadProductsRequest>) {
     const workspaceKey = toWorkspaceKey(ctx);
-    const entries = ctx.kv.list(
-      { prefix: [...workspaceKey, "products"] },
-      {
-        limit: 100,
-      }
-    );
+    const selector = { prefix: [...workspaceKey, "products"] };
+    const entries = ctx.kv.list(selector, { limit: 100 });
     const products = [];
     for await (const entry of entries) {
       products.push(Zod.parse(Product, entry.value));
