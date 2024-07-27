@@ -17,7 +17,7 @@ export const apiHandler = async (req: Request): Promise<Response> => {
   if (req.method === "POST" && url.pathname === "/api/catalog/echo") {
     const input = await req.json();
     const output = await CatalogServiceClient.echo(ctx, input);
-    return new Response(writeJson(output, startTime), {
+    return new Response(writeJson(output, performance.now() - startTime), {
       status: 200,
       headers: responseHeaders,
     });
@@ -26,7 +26,7 @@ export const apiHandler = async (req: Request): Promise<Response> => {
   if (req.method === "POST" && url.pathname === "/api/catalog/write-product") {
     const input = await req.json();
     const output = await CatalogServiceClient.writeProduct(ctx, input);
-    return new Response(writeJson(output, startTime), {
+    return new Response(writeJson(output, performance.now() - startTime), {
       status: 200,
       headers: responseHeaders,
     });
@@ -35,7 +35,7 @@ export const apiHandler = async (req: Request): Promise<Response> => {
   if (req.method === "POST" && url.pathname === "/api/catalog/read-products") {
     const input = await req.json();
     const output = await CatalogServiceClient.readProducts(ctx, input);
-    return new Response(writeJson(output, startTime), {
+    return new Response(writeJson(output, performance.now() - startTime), {
       status: 200,
       headers: responseHeaders,
     });
@@ -53,8 +53,8 @@ const transformToClientContext = (headers: Headers): ClientContext => {
   };
 };
 
-const writeJson = (output: object, startTime: number) => {
-  const time = Fmt.millis(performance.now() - startTime);
+const writeJson = (output: object, timeMillis: number) => {
+  const time = Fmt.millis(timeMillis);
   const size = Fmt.bytes(Json.write(output).length);
   return Json.write({ ...output, time, size });
 };

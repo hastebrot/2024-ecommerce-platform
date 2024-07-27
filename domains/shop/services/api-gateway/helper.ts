@@ -75,7 +75,7 @@ export const Id = {
 };
 
 export const Zod = {
-  parse<Out, In>(schema: z.ZodType<Out, z.ZodTypeDef, In>, value: In): Out {
+  parseTyped<Out, In>(schema: z.ZodType<Out, z.ZodTypeDef, In>, value: In): Out {
     try {
       return schema.parse(value);
     } catch (error: unknown) {
@@ -86,6 +86,10 @@ export const Zod = {
       const message = `Zod parse error, schema '${schema.description}'`;
       throw new Error(`${message}, ${cause}`);
     }
+  },
+
+  parse<Out, In>(schema: z.ZodType<Out, z.ZodTypeDef, In>, value: unknown): Out {
+    return Zod.parseTyped(schema, value);
   },
 
   schema<T extends z.ZodType>(description: string, schema: T): T {
