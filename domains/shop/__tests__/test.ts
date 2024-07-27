@@ -1,4 +1,4 @@
-import { dom } from "./deps.ts";
+import { dom, nanoid } from "./deps.ts";
 
 const defaultHeaders = {
   "cache-control": "no-transform",
@@ -85,4 +85,10 @@ export const throwError = (message: string): never => {
 
 export const range = (start: number, end: number): number[] => {
   return [...Array(end - start).keys()].map((index) => start + index);
+};
+
+export const Id = {
+  nanoid(size?: number): string {
+    return nanoid.nanoid(size);
+  },
 };
