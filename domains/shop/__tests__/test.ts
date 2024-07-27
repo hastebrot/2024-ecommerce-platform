@@ -6,13 +6,15 @@ const defaultHeaders = {
 
 export type FetchGetParams = {
   url: string;
-  urlParams?: Record<string, string>;
+  urlParams?: Record<string, string> | Iterable<string[]>;
   headers?: Record<string, string>;
 };
 
 export const fetchGet = (params: FetchGetParams) => {
   const url = new URL(params.url);
-  url.search = new URLSearchParams(params.urlParams).toString();
+  if (params.urlParams !== undefined) {
+    url.search = new URLSearchParams(params.urlParams).toString();
+  }
   return fetch(url, {
     method: "GET",
     headers: {
@@ -24,14 +26,16 @@ export const fetchGet = (params: FetchGetParams) => {
 
 export type FetchPostParams = {
   url: string;
-  urlParams?: Record<string, string>;
+  urlParams?: Record<string, string> | Iterable<string[]>;
   bodyParams?: Record<string, unknown>;
   headers?: Record<string, string>;
 };
 
 export const fetchPost = (params: FetchPostParams) => {
   const url = new URL(params.url);
-  url.search = new URLSearchParams(params.urlParams).toString();
+  if (params.urlParams !== undefined) {
+    url.search = new URLSearchParams(params.urlParams).toString();
+  }
   return fetch(url, {
     method: "POST",
     body: JSON.stringify(params.bodyParams),

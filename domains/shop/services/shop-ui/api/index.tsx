@@ -8,7 +8,7 @@ const siteRefreshMillis = 250;
 // deno-lint-ignore require-await
 export const handleIndex = async (ctx: Context, req: Request): Promise<Response> => {
   const url = new URL(req.url);
-  const pageParam = url.searchParams.get("page");
+  const urlQueryString = url.search;
 
   const html = renderToString(
     <html lang="en">
@@ -56,7 +56,7 @@ export const handleIndex = async (ctx: Context, req: Request): Promise<Response>
         <main
           class="relative grid w-full h-full"
           hx-ext="morph"
-          hx-get={`/ui/site?page=${pageParam}`}
+          hx-get={`/ui/site${urlQueryString}`}
           hx-trigger="load"
           hx-swap="innerHTML"
         ></main>

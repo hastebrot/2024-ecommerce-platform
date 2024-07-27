@@ -11,9 +11,15 @@ import { Header } from "../components/Header.tsx";
 import { Page } from "../components/Page.tsx";
 import { ShoppingHeader } from "../components/ShoppingHeader.tsx";
 
-export const handleProductListing = async (_ctx: Context, _req: Request): Promise<Response> => {
-  const products = await CatalogClient.readProducts();
-
+export const handleProductListing = async (_ctx: Context, req: Request): Promise<Response> => {
+  const url = new URL(req.url);
+  const category = url.searchParams.get("category");
+  const attributes = url.searchParams.getAll("attribute");
+  const productsResult = await CatalogClient.readProducts({
+    category,
+    attributes,
+  });
+  const products = productsResult.result.products;
   const html = renderToString(
     <Page>
       <title hx-swap-oob="innerHTML:title">product-listing &middot; shop-ui</title>
@@ -26,7 +32,7 @@ export const handleProductListing = async (_ctx: Context, _req: Request): Promis
       {/* page content. */}
       <Breadcrumbs />
       <DisplayOptions />
-      <FacetedProductList products={products.result.products} />
+      <FacetedProductList products={products} />
 
       {/* footer. */}
       <Footer />
