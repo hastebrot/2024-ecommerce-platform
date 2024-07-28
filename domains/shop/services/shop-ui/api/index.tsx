@@ -28,21 +28,24 @@ export const handleIndex = async (ctx: Context, req: Request): Promise<Response>
         <script
           src="https://unpkg.com/@twind/cdn@1.0.8/cdn.global.js"
           crossorigin="anonymous"
-        ></script>
+        >
+        </script>
         <script
           src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"
           crossorigin="anonymous"
-        ></script>
+        >
+        </script>
         <script
           src="https://unpkg.com/idiomorph@0.3.0/dist/idiomorph-ext.min.js"
           crossorigin="anonymous"
-        ></script>
+        >
+        </script>
       </head>
       <body
         class={classNames(
           "grid m-0 min-h-[100vh]",
           // CSS styles for body element to fill visible area in safari browser on ipad.
-          "supports-[-webkit-touch-callout:none]:min-h-[-webkit-fill-available]"
+          "supports-[-webkit-touch-callout:none]:min-h-[-webkit-fill-available]",
         )}
       >
         <div class="hidden">
@@ -51,7 +54,8 @@ export const handleIndex = async (ctx: Context, req: Request): Promise<Response>
             hx-get={`/ui/site-refresh?timestamp=${ctx.serverTimestamp}`}
             hx-trigger={`every ${siteRefreshMillis}ms`}
             hx-swap="none swap:0s settle:0s"
-          ></div>
+          >
+          </div>
         </div>
         <main
           class="relative grid w-full h-full"
@@ -59,9 +63,10 @@ export const handleIndex = async (ctx: Context, req: Request): Promise<Response>
           hx-get={`/ui/site${urlQueryString}`}
           hx-trigger="load"
           hx-swap="innerHTML"
-        ></main>
+        >
+        </main>
       </body>
-    </html>
+    </html>,
   );
 
   return new Response(html, {

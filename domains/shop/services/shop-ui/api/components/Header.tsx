@@ -7,7 +7,7 @@ export const Header = () => {
     <header
       class={classNames(
         "bg-[#f1f1f1]",
-        "[box-shadow:inset_0px_-0.0625rem_0px_0px_#ccc,inset_0px_-0.3125rem_0px_0px_rgba(0,0,0,0.05)]"
+        "[box-shadow:inset_0px_-0.0625rem_0px_0px_#ccc,inset_0px_-0.3125rem_0px_0px_rgba(0,0,0,0.05)]",
       )}
     >
       <div class="flex">
@@ -34,7 +34,7 @@ export const HeaderHomepage = () => {
     <a
       class={classNames(
         "header-homepage shrink-0 flex items-center justify-center w-[10rem] h-[5rem]",
-        "bg-[#cc071e] text-[#fffffe] text-[2rem] font-black uppercase cursor-pointer"
+        "bg-[#cc071e] text-[#fffffe] text-[2rem] font-black uppercase cursor-pointer",
       )}
     >
       SHOP
@@ -64,14 +64,14 @@ export const FunnelNavigationTab = (props: FunnelNavigationTabProps) => {
         "cursor-pointer",
         "after:absolute after:inset-0 after:mb-[0.25rem] after:bg-[#fff] after:z-[-10]",
         props.isActive && "after:!mb-0 !h-[3.25rem] border-b-[#fff]",
-        "hover:h-[3.25rem]"
+        "hover:h-[3.25rem]",
       )}
     >
       <a
         class={classNames(
           "flex items-center justify-center text-[#1c1c1c] px-[1rem] text-[1.25rem] font-[500] whitespace-nowrap",
           props.isActive && "text-[#BB2929]",
-          "hover:text-[#BB2929]"
+          "hover:text-[#BB2929]",
         )}
       >
         {props.children}

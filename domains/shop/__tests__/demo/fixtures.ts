@@ -60,7 +60,7 @@ Deno.test("demo write products", async () => {
         bodyParams: {
           product,
         },
-      })
+      }),
     );
   }
 });

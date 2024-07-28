@@ -8,8 +8,9 @@ export const handleSiteRefresh = async (ctx: Context, req: Request): Promise<Res
   return new Response("", {
     headers: {
       "content-type": "text/plain; charset=utf-8",
-      "hx-refresh":
-        clientTimestamp != null && clientTimestamp !== ctx.serverTimestamp ? "true" : "false",
+      "hx-refresh": clientTimestamp != null && clientTimestamp !== ctx.serverTimestamp
+        ? "true"
+        : "false",
     },
   });
 };

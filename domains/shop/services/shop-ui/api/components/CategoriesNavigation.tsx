@@ -37,7 +37,7 @@ export const CategoriesNavigationItem = (props: CategoriesNavigationItemProps) =
         "p-[0.75rem_1rem_0.875rem] cursor-pointer text-[#1c1c1c]",
         props.isActive && "text-[#cc071e]",
         "hover:text-[#cc071e]",
-        props.isActive && "after:absolute after:inset-0 after:h-[0.25rem] after:bg-[#cc071e]"
+        props.isActive && "after:absolute after:inset-0 after:h-[0.25rem] after:bg-[#cc071e]",
       )}
     >
       {props.children}

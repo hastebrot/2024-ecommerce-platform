@@ -22,7 +22,7 @@ export const handleCheckoutBasket = async (_ctx: Context, _req: Request): Promis
 
       {/* footer. */}
       <CheckoutFooter />
-    </Page>
+    </Page>,
   );
 
   return new Response(html, {

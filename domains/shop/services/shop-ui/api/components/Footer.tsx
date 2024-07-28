@@ -69,7 +69,7 @@ export const FooterSectionLinks = (props: FooterSectionLinksProps) => {
     <div
       class={classNames(
         "flex flex-col gap-y-[12px] font-[400] text-[16px]",
-        "[&_a]:hover:text-[#cc071e] [&_a]:hover:underline [&_a]:hover:cursor-pointer"
+        "[&_a]:hover:text-[#cc071e] [&_a]:hover:underline [&_a]:hover:cursor-pointer",
       )}
     >
       {props.children}
