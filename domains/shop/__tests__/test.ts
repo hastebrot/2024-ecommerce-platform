@@ -6,8 +6,8 @@ const defaultHeaders = {
 
 export type FetchGetParams = {
   url: string;
-  urlParams?: Record<string, string> | Iterable<string[]>;
-  headers?: Record<string, string>;
+  urlParams?: Record<string, string> | string[][] | string;
+  headers?: Record<string, string> | Iterable<string>;
 };
 
 export const fetchGet = (params: FetchGetParams) => {
@@ -26,9 +26,9 @@ export const fetchGet = (params: FetchGetParams) => {
 
 export type FetchPostParams = {
   url: string;
-  urlParams?: Record<string, string> | Iterable<string[]>;
-  bodyParams?: Record<string, unknown>;
-  headers?: Record<string, string>;
+  urlParams?: Record<string, string> | string[][] | string;
+  headers?: Record<string, string> | Iterable<string>;
+  bodyParams?: object;
 };
 
 export const fetchPost = (params: FetchPostParams) => {

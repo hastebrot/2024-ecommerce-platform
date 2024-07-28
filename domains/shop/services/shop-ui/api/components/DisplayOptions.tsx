@@ -1,15 +1,28 @@
 /** @jsx createElement */
 import { icons } from "lucide-preact";
 import { classNames, createElement } from "../../helper/jsx.ts";
+import * as model from "../../model.ts";
 
-export const DisplayOptions = () => {
-  const isSearchResult = false;
+export type DisplayOptionsProps = {
+  products: model.Product[];
+  isSearchResult?: boolean;
+};
+
+export const DisplayOptions = (props: DisplayOptionsProps) => {
+  const productsCount = props.products.length;
 
   return (
-    <div class="bg-[#fff] py-[16px] px-[15px] flex items-center justify-between">
+    <div class="display-options bg-[#fff] py-[16px] px-[15px] flex items-center justify-between">
       <div>
-        <DisplayOptionsResultsText headlineText="Frisches Obst" text="108 Artikel" />
-        {isSearchResult && <DisplayOptionsResultsSearchHeadlineText text="1008 Artikel" />}
+        {!props.isSearchResult && (
+          <DisplayOptionsResultsText
+            headlineText="Frisches Obst"
+            countText={`${productsCount} Artikel`}
+          />
+        )}
+        {props.isSearchResult && (
+          <DisplayOptionsSearchResultsText text={`${productsCount} Artikel`} />
+        )}
       </div>
       <div>
         <DisplayOptionsResultsPerPageSelect />
@@ -21,31 +34,29 @@ export const DisplayOptions = () => {
 
 export type DisplayOptionsResultsTextProps = {
   headlineText?: string;
-  text: string;
+  countText: string;
 };
 
 export const DisplayOptionsResultsText = (props: DisplayOptionsResultsTextProps) => {
   return (
-    <span class="inline-block text-[#676767] text-[0.875rem] leading-[1.6] font-[400]">
+    <div class="results-text inline-block text-[#676767] text-[0.875rem] leading-[1.6] font-[400]">
       {props.headlineText && (
         <h1 class="inline-block text-[#1c1c1c] text-[1.125rem] leading-[1.125rem] pr-[12px] font-[700]">
           {props.headlineText}
         </h1>
       )}
-      {props.text}
-    </span>
+      {props.countText}
+    </div>
   );
 };
 
-export type DisplayOptionsResultsTextSearchHeadlineProps = {
+export type DisplayOptionsSearchResultsTextProps = {
   text: string;
 };
 
-export const DisplayOptionsResultsSearchHeadlineText = (
-  props: DisplayOptionsResultsTextSearchHeadlineProps
-) => {
+export const DisplayOptionsSearchResultsText = (props: DisplayOptionsSearchResultsTextProps) => {
   return (
-    <h1 class="inline-block text-[#1c1c1c] text-[1rem] leading-[1.125rem] font-[400]">
+    <h1 class="results-text inline-block text-[#1c1c1c] text-[1rem] leading-[1.125rem] font-[400]">
       {props.text}
     </h1>
   );

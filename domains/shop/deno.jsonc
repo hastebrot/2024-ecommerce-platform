@@ -13,10 +13,11 @@
     "test": "cd __tests__ && deno task -q test",
     "test:watch": "cd __tests__ && deno task -q test:watch",
     "test:demo": "cd __tests__ && deno task -q test:demo",
-    "check": "deno check **/*.ts **/*.tsx",
-    "lint": "deno lint",
+    "pr": "deno task check && deno task lint && deno task fmt",
+    "check": "deno check **/*.ts **/*.tsx --quiet",
+    "lint": "deno lint --quiet",
     "lint:fix": "deno lint --fix",
-    "fmt": "deno fmt --check",
+    "fmt": "deno fmt --check --quiet",
     "fmt:fix": "deno fmt"
   },
   "imports": {

@@ -31,7 +31,7 @@ export const handleProductListing = async (_ctx: Context, req: Request): Promise
 
       {/* page content. */}
       <Breadcrumbs />
-      <DisplayOptions />
+      <DisplayOptions products={products} />
       <FacetedProductList products={products} />
 
       {/* footer. */}
