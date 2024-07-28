@@ -5,14 +5,9 @@ const apiGatewayAddr = "localhost:8080";
 const testWorkspace = "test";
 
 Deno.test("write and read products", async () => {
-  // when:
-  await consumeJson(
-    await fetchPost({
-      url: `http://${apiGatewayAddr}/api/catalog/write-product`,
-      headers: {
-        "x-workspace": testWorkspace,
-      },
-      bodyParams: {
+  const data = {
+    input: [
+      {
         product: {
           productNumber: "1",
           productTitle: "product title",
@@ -20,15 +15,7 @@ Deno.test("write and read products", async () => {
           attributeList: [],
         },
       },
-    })
-  );
-  await consumeJson(
-    await fetchPost({
-      url: `http://${apiGatewayAddr}/api/catalog/write-product`,
-      headers: {
-        "x-workspace": testWorkspace,
-      },
-      bodyParams: {
+      {
         product: {
           productNumber: "2",
           productTitle: "other product title",
@@ -36,8 +23,43 @@ Deno.test("write and read products", async () => {
           attributeList: [],
         },
       },
-    })
-  );
+    ],
+    output: {
+      ok: true,
+      result: {
+        products: [
+          {
+            productNumber: "1",
+            productTitle: "product title",
+            categoryPath: [],
+            attributeList: [],
+          },
+          {
+            productNumber: "2",
+            productTitle: "other product title",
+            categoryPath: [],
+            attributeList: [],
+          },
+        ],
+      },
+      count: {
+        products: 2,
+      },
+    },
+  };
+
+  // when:
+  for (const input of data.input) {
+    await consumeJson(
+      await fetchPost({
+        url: `http://${apiGatewayAddr}/api/catalog/write-product`,
+        headers: {
+          "x-workspace": testWorkspace,
+        },
+        bodyParams: input,
+      })
+    );
+  }
 
   // then:
   const res = await fetchPost({
@@ -47,38 +69,14 @@ Deno.test("write and read products", async () => {
     },
     bodyParams: {},
   });
-  assert.assertObjectMatch(await consumeJson(res), {
-    ok: true,
-    result: {
-      products: [
-        {
-          productNumber: "1",
-          productTitle: "product title",
-          categoryPath: [],
-          attributeList: [],
-        },
-        {
-          productNumber: "2",
-          productTitle: "other product title",
-          categoryPath: [],
-          attributeList: [],
-        },
-      ],
-    },
-    count: {
-      products: 2,
-    },
-  });
+  const output = await consumeJson<object>(res);
+  assert.assertObjectMatch(output, data.output);
 });
 
 Deno.test("read products with category filter", async () => {
-  await consumeJson(
-    await fetchPost({
-      url: `http://${apiGatewayAddr}/api/catalog/write-product`,
-      headers: {
-        "x-workspace": testWorkspace,
-      },
-      bodyParams: {
+  const data = {
+    input: [
+      {
         product: {
           productNumber: "1",
           productTitle: "product title",
@@ -86,15 +84,7 @@ Deno.test("read products with category filter", async () => {
           attributeList: [],
         },
       },
-    })
-  );
-  await consumeJson(
-    await fetchPost({
-      url: `http://${apiGatewayAddr}/api/catalog/write-product`,
-      headers: {
-        "x-workspace": testWorkspace,
-      },
-      bodyParams: {
+      {
         product: {
           productNumber: "2",
           productTitle: "other product title",
@@ -102,9 +92,39 @@ Deno.test("read products with category filter", async () => {
           attributeList: [],
         },
       },
-    })
-  );
+    ],
+    output: {
+      ok: true,
+      result: {
+        products: [
+          {
+            productNumber: "1",
+            productTitle: "product title",
+            categoryPath: [{ id: "category-1", category: "Category 1" }],
+            attributeList: [],
+          },
+        ],
+      },
+      count: {
+        products: 1,
+      },
+    },
+  };
 
+  // when:
+  for (const input of data.input) {
+    await consumeJson(
+      await fetchPost({
+        url: `http://${apiGatewayAddr}/api/catalog/write-product`,
+        headers: {
+          "x-workspace": testWorkspace,
+        },
+        bodyParams: input,
+      })
+    );
+  }
+
+  // then:
   const res = await fetchPost({
     url: `http://${apiGatewayAddr}/api/catalog/read-products`,
     headers: {
@@ -114,32 +134,14 @@ Deno.test("read products with category filter", async () => {
       category: "category-1",
     },
   });
-  assert.assertObjectMatch(await consumeJson(res), {
-    ok: true,
-    result: {
-      products: [
-        {
-          productNumber: "1",
-          productTitle: "product title",
-          categoryPath: [{ id: "category-1", category: "Category 1" }],
-          attributeList: [],
-        },
-      ],
-    },
-    count: {
-      products: 1,
-    },
-  });
+  const output = await consumeJson<object>(res);
+  assert.assertObjectMatch(output, data.output);
 });
 
 Deno.test("read products with attributes filter", async () => {
-  await consumeJson(
-    await fetchPost({
-      url: `http://${apiGatewayAddr}/api/catalog/write-product`,
-      headers: {
-        "x-workspace": testWorkspace,
-      },
-      bodyParams: {
+  const data = {
+    input: [
+      {
         product: {
           productNumber: "1",
           productTitle: "product title",
@@ -147,15 +149,7 @@ Deno.test("read products with attributes filter", async () => {
           attributeList: [{ id: "attribute-1", attribute: "Attribute 1" }],
         },
       },
-    })
-  );
-  await consumeJson(
-    await fetchPost({
-      url: `http://${apiGatewayAddr}/api/catalog/write-product`,
-      headers: {
-        "x-workspace": testWorkspace,
-      },
-      bodyParams: {
+      {
         product: {
           productNumber: "2",
           productTitle: "other product title",
@@ -163,9 +157,39 @@ Deno.test("read products with attributes filter", async () => {
           attributeList: [],
         },
       },
-    })
-  );
+    ],
+    output: {
+      ok: true,
+      result: {
+        products: [
+          {
+            productNumber: "1",
+            productTitle: "product title",
+            categoryPath: [],
+            attributeList: [{ id: "attribute-1", attribute: "Attribute 1" }],
+          },
+        ],
+      },
+      count: {
+        products: 1,
+      },
+    },
+  };
 
+  // when:
+  for (const input of data.input) {
+    await consumeJson(
+      await fetchPost({
+        url: `http://${apiGatewayAddr}/api/catalog/write-product`,
+        headers: {
+          "x-workspace": testWorkspace,
+        },
+        bodyParams: input,
+      })
+    );
+  }
+
+  // then:
   const res = await fetchPost({
     url: `http://${apiGatewayAddr}/api/catalog/read-products`,
     headers: {
@@ -175,20 +199,6 @@ Deno.test("read products with attributes filter", async () => {
       attributes: ["attribute-1"],
     },
   });
-  assert.assertObjectMatch(await consumeJson(res), {
-    ok: true,
-    result: {
-      products: [
-        {
-          productNumber: "1",
-          productTitle: "product title",
-          categoryPath: [],
-          attributeList: [{ id: "attribute-1", attribute: "Attribute 1" }],
-        },
-      ],
-    },
-    count: {
-      products: 1,
-    },
-  });
+  const output = await consumeJson<object>(res);
+  assert.assertObjectMatch(output, data.output);
 });
