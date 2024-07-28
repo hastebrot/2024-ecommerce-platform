@@ -1,5 +1,5 @@
 import { Json } from "./helper.ts";
-import { ClientContext } from "./model.ts";
+import { ClientContext } from "./types.ts";
 
 const apiMethod = "POST";
 const catalogAddr = "localhost:8081";

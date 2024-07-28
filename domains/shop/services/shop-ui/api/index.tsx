@@ -1,6 +1,6 @@
 /** @jsx createElement */
 import { classNames, createElement, renderToString } from "../helper/jsx.ts";
-import { Context } from "../model.ts";
+import { Context } from "../types.ts";
 
 const title = "shop-ui";
 const siteRefreshMillis = 250;

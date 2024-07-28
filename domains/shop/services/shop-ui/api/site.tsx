@@ -1,4 +1,4 @@
-import { Context } from "../model.ts";
+import { Context } from "../types.ts";
 import { handleCheckoutBasket } from "./pages/checkoutBasket.tsx";
 import { handleProductDetails } from "./pages/productDetails.tsx";
 import { handleProductListing } from "./pages/productListing.tsx";

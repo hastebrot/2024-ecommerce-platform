@@ -1,7 +1,7 @@
 /** @jsx createElement */
 import { CatalogClient } from "../../client.ts";
 import { createElement, renderToString } from "../../helper/jsx.ts";
-import { Context } from "../../model.ts";
+import { Context } from "../../types.ts";
 import { Breadcrumbs } from "../components/Breadcrumbs.tsx";
 import { CategoriesNavigation } from "../components/CategoriesNavigation.tsx";
 import { DisplayOptions } from "../components/DisplayOptions.tsx";
