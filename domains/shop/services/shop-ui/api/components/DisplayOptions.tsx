@@ -1,15 +1,28 @@
 /** @jsx createElement */
 import { icons } from "lucide-preact";
 import { classNames, createElement } from "../../helper/jsx.ts";
+import * as model from "../../model.ts";
 
-export const DisplayOptions = () => {
-  const isSearchResult = false;
+export type DisplayOptionsProps = {
+  products: model.Product[];
+  isSearchResult?: boolean;
+};
+
+export const DisplayOptions = (props: DisplayOptionsProps) => {
+  const productsCount = props.products.length;
 
   return (
     <div class="bg-[#fff] py-[16px] px-[15px] flex items-center justify-between">
       <div>
-        <DisplayOptionsResultsText headlineText="Frisches Obst" text="108 Artikel" />
-        {isSearchResult && <DisplayOptionsResultsSearchHeadlineText text="1008 Artikel" />}
+        {!props.isSearchResult && (
+          <DisplayOptionsResultsText
+            headlineText="Frisches Obst"
+            text={`${productsCount} Artikel`}
+          />
+        )}
+        {props.isSearchResult && (
+          <DisplayOptionsSearchResultsText text={`${productsCount} Artikel`} />
+        )}
       </div>
       <div>
         <DisplayOptionsResultsPerPageSelect />
@@ -37,13 +50,11 @@ export const DisplayOptionsResultsText = (props: DisplayOptionsResultsTextProps)
   );
 };
 
-export type DisplayOptionsResultsTextSearchHeadlineProps = {
+export type DisplayOptionsSearchResultsTextProps = {
   text: string;
 };
 
-export const DisplayOptionsResultsSearchHeadlineText = (
-  props: DisplayOptionsResultsTextSearchHeadlineProps
-) => {
+export const DisplayOptionsSearchResultsText = (props: DisplayOptionsSearchResultsTextProps) => {
   return (
     <h1 class="inline-block text-[#1c1c1c] text-[1rem] leading-[1.125rem] font-[400]">
       {props.text}
