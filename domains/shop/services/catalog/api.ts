@@ -28,7 +28,7 @@ export const apiHandler = async (serviceCtx: ServiceContext, req: Request): Prom
     const input = Zod.parse(model.WriteProductRequest, await req.json());
     const output = Zod.parseTyped(
       model.WriteProductResponse,
-      await ProductStoreClient.writeProduct(ctx, input)
+      await ProductStoreClient.writeProduct(ctx, input),
     );
     return new Response(Json.write(output), {
       status: 200,
@@ -40,7 +40,7 @@ export const apiHandler = async (serviceCtx: ServiceContext, req: Request): Prom
     const input = Zod.parse(model.ReadProductsRequest, await req.json());
     const output = Zod.parseTyped(
       model.ReadProductsResponse,
-      await ProductStoreClient.readProducts(ctx, input)
+      await ProductStoreClient.readProducts(ctx, input),
     );
     return new Response(Json.write(output), {
       status: 200,

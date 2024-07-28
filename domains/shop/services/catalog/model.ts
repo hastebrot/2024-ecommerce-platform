@@ -5,7 +5,7 @@ import { z, Zod } from "./helper.ts";
 export type EchoRequest = z.infer<typeof EchoRequest>;
 export const EchoRequest = Zod.schema(
   "EchoRequest",
-  z.lazy(() => Echo)
+  z.lazy(() => Echo),
 );
 
 export type EchoResponse = z.infer<typeof EchoResponse>;
@@ -14,7 +14,7 @@ export const EchoResponse = Zod.schema(
   z.object({
     ok: z.boolean(),
     result: z.lazy(() => Echo),
-  })
+  }),
 );
 
 export type WriteProductRequest = z.infer<typeof WriteProductRequest>;
@@ -59,13 +59,13 @@ export const Product = Zod.object("Product", {
     z.object({
       id: z.string(),
       category: z.string(),
-    })
+    }),
   ),
   attributeList: z.array(
     z.object({
       id: z.string(),
       attribute: z.string(),
-    })
+    }),
   ),
   createdDate: z.string().optional(),
   lastModifiedDate: z.string().optional(),

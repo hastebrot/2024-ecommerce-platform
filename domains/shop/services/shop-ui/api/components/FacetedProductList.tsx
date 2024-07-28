@@ -95,13 +95,13 @@ export const FacetGroupContainer = (props: FacetGroupContainerProps) => {
     <li
       class={classNames(
         "facet-group-container flex flex-col bg-[#fff] rounded-[2px] mb-[16px]",
-        "[box-shadow:0_1px_6px_0_rgba(0,0,0,0.28)]"
+        "[box-shadow:0_1px_6px_0_rgba(0,0,0,0.28)]",
       )}
     >
       <label
         class={classNames(
           "facet-group-title group peer flex flex-col justify-center text-[1.125rem] leading-[1.15] font-[500] text-[#1c1c1c] hover:text-[#cc071e]",
-          "h-[58px] p-[0_8px_0_16px] border-b border-[#ccc] cursor-pointer"
+          "h-[58px] p-[0_8px_0_16px] border-b border-[#ccc] cursor-pointer",
         )}
       >
         <input class="hidden" type="checkbox" checked={!props.isCollapsed} />
@@ -194,7 +194,7 @@ export const FacetGroupOptionCheckbox = (props: FacetGroupOptionCheckboxProps) =
             class={classNames(
               "inline-flex items-center justify-center w-[20px] h-[20px] mt-[2px] shrink-0",
               "group-hover:[box-shadow:inset_0_0_0_1px_#1c1c1c,0_0_0_1px_#1c1c1c]",
-              "group-hover:rounded-[2px]"
+              "group-hover:rounded-[2px]",
             )}
           >
             {!props.isSelected && (
@@ -225,7 +225,7 @@ export const FacetGroupSearchFilter = (props: FacetGroupSearchFilterProps) => {
           "font-[400] text-[#1c1c1c] text-[1rem] leading-[1.3125rem]",
           "placeholder:text-[#767676]",
           "hover:border-transparent hover:bg-[#f1f1f1]",
-          "hover:[box-shadow:0_0_0_2px_#1c1c1c]"
+          "hover:[box-shadow:0_0_0_2px_#1c1c1c]",
         )}
         type="text"
         placeholder={props.placeholderText}
@@ -249,7 +249,7 @@ export const FacetGroupResetButton = (props: FacetGroupResetButtonProps) => {
         "my-[16px] mx-auto w-full max-w-[198px] py-[12px] px[8px] rounded-[2px]",
         "font-[400] text-[16px] leading-[1] text-[1c1c1c] text-center",
         "[box-shadow:inset_0_0_0_1px_#676767]",
-        "hover:[box-shadow:inset_0_0_0_1px_#1c1c1c,0_0_0_1px_#1c1c1c]"
+        "hover:[box-shadow:inset_0_0_0_1px_#1c1c1c,0_0_0_1px_#1c1c1c]",
       )}
     >
       {props.text}
@@ -325,7 +325,7 @@ export const QuickFacetChip = (props: QuickFacetChipProps) => {
         class={classNames(
           "inline-flex items-center h-[40px] mr-[8px] px-[12px]",
           "rounded-full border border-[#949494] cursor-pointer hover:bg-[#f1f1f1]",
-          props.isSelected && "bg-[#f1f1f1] hover:!bg-[#fff] !border-2 !border-[#1c1c1c]"
+          props.isSelected && "bg-[#f1f1f1] hover:!bg-[#fff] !border-2 !border-[#1c1c1c]",
         )}
       >
         {props.icon && (
@@ -382,7 +382,7 @@ export const Product = (props: ProductProps) => {
         "product h-[416px] m-[0_8px_16px]",
         "w-[calc(33.3333%-16px)] xl:w-[calc(25%-16px)]",
         "border border-[#ccc] hover:border-[#1c1c1c] rounded-[2px] cursor-pointer",
-        props.badge === "sponsored" && "!border-[#1c1c1c] hover:[outline:1px_solid_#1c1c1c]"
+        props.badge === "sponsored" && "!border-[#1c1c1c] hover:[outline:1px_solid_#1c1c1c]",
       )}
     >
       <a class="product-details-link relative">
@@ -410,7 +410,7 @@ export const BadgeSponsored = () => {
     <div
       class={classNames(
         "absolute top-0 left-0 px-[8px] [border-bottom-right-radius:4px]",
-        "bg-[#1c1c1c] text-[#fff] text-[0.875rem] leading-[1.5rem] font-[400]"
+        "bg-[#1c1c1c] text-[#fff] text-[0.875rem] leading-[1.5rem] font-[400]",
       )}
     >
       Gesponsert
@@ -423,7 +423,7 @@ export const BadgeRegional = () => {
     <div
       class={classNames(
         "absolute top-0 left-0 px-[8px] [border-bottom-right-radius:4px]",
-        "bg-[#fdc300] text-[#1c1c1c] text-[1rem] font-[500]"
+        "bg-[#fdc300] text-[#1c1c1c] text-[1rem] font-[500]",
       )}
     >
       Regional
@@ -436,7 +436,7 @@ export const BadgeLowestPrice = () => {
     <div
       class={classNames(
         "absolute top-0 left-0 px-[8px] [border-bottom-right-radius:4px]",
-        "bg-[#164193] text-[#fff] text-[1rem] font-[500]"
+        "bg-[#164193] text-[#fff] text-[1rem] font-[500]",
       )}
     >
       Tiefpreis
@@ -514,7 +514,7 @@ export const ProductFavoriteButton = () => {
     <button
       class={classNames(
         "bg-[#fff] text-[#4c4c4c] border border-[#8c8c8c] rounded-[2px]",
-        "hover:bg-[#f1f1f1] hover:border-hidden hover:border-transparent hover:[box-shadow:0_0_0_2px_#4c4c4c,0_0_0_2px_#4c4c4c]"
+        "hover:bg-[#f1f1f1] hover:border-hidden hover:border-transparent hover:[box-shadow:0_0_0_2px_#4c4c4c,0_0_0_2px_#4c4c4c]",
       )}
     >
       <span class="h-[40px] w-[40px] flex items-center justify-center">
@@ -535,7 +535,7 @@ export const ProductBasketButton = (props: ProductBasketButtonProps) => {
         <button
           class={classNames(
             "bg-[#bb2929] text-[#fff] rounded-[2px]",
-            "hover:bg-[#911c1c] hover:[box-shadow:0_0_0_1px_#911c1c,0_0_0_1px_#911c1c]"
+            "hover:bg-[#911c1c] hover:[box-shadow:0_0_0_1px_#911c1c,0_0_0_1px_#911c1c]",
           )}
         >
           <span class="h-[40px] w-[80px] gap-[2px] flex items-center justify-center">
@@ -549,7 +549,7 @@ export const ProductBasketButton = (props: ProductBasketButtonProps) => {
           <button
             class={classNames(
               "bg-[#fff] text-[#4c4c4c] border border-[#8c8c8c] rounded-l-[2px] z-10",
-              "hover:bg-[#f1f1f1] hover:rounded-[2px] hover:border-hidden hover:border-transparent hover:[box-shadow:0_0_0_2px_#4c4c4c,0_0_0_2px_#4c4c4c]"
+              "hover:bg-[#f1f1f1] hover:rounded-[2px] hover:border-hidden hover:border-transparent hover:[box-shadow:0_0_0_2px_#4c4c4c,0_0_0_2px_#4c4c4c]",
             )}
           >
             <span class="h-[40px] w-[40px] gap-[2px] flex items-center justify-center">
@@ -560,7 +560,7 @@ export const ProductBasketButton = (props: ProductBasketButtonProps) => {
           <input
             class={classNames(
               "w-[40px] bg-[#fff] hover:bg-[#f1f1f1;] text-[#1c1c1c] border-y border-[#676767]",
-              "text-[1.125rem] leading-[1.1rem] [outline:0] text-center overflow-clip"
+              "text-[1.125rem] leading-[1.1rem] [outline:0] text-center overflow-clip",
             )}
             type="text"
             pattern="[0-9]*"
@@ -570,7 +570,7 @@ export const ProductBasketButton = (props: ProductBasketButtonProps) => {
           <button
             class={classNames(
               "bg-[#367b45] text-[#fff] rounded-r-[2px] z-10",
-              "hover:bg-[#265B33] hover:rounded-[2px] hover:[box-shadow:0_0_0_1px_#265B33,0_0_0_1px_#265B33]"
+              "hover:bg-[#265B33] hover:rounded-[2px] hover:[box-shadow:0_0_0_1px_#265B33,0_0_0_1px_#265B33]",
             )}
           >
             <span class="h-[40px] w-[40px] gap-[2px] flex items-center justify-center">

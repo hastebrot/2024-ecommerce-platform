@@ -32,7 +32,7 @@ export const handleProductDetails = async (_ctx: Context, _req: Request): Promis
       {/* footer. */}
       <FooterNewsletter />
       <Footer />
-    </Page>
+    </Page>,
   );
 
   return new Response(html, {

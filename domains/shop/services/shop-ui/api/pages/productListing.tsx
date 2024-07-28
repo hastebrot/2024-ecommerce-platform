@@ -36,7 +36,7 @@ export const handleProductListing = async (_ctx: Context, req: Request): Promise
 
       {/* footer. */}
       <Footer />
-    </Page>
+    </Page>,
   );
 
   return new Response(html, {

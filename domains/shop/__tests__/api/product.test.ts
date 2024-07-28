@@ -57,7 +57,7 @@ Deno.test("write and read products", async () => {
           "x-workspace": testWorkspace,
         },
         bodyParams: input,
-      })
+      }),
     );
   }
 
@@ -120,7 +120,7 @@ Deno.test("read products with category filter", async () => {
           "x-workspace": testWorkspace,
         },
         bodyParams: input,
-      })
+      }),
     );
   }
 
@@ -185,7 +185,7 @@ Deno.test("read products with attributes filter", async () => {
           "x-workspace": testWorkspace,
         },
         bodyParams: input,
-      })
+      }),
     );
   }
 

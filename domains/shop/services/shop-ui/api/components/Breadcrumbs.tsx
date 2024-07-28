@@ -26,7 +26,7 @@ export const BreadcrumbsLink = (props: BreadcrumbsLinkProps) => {
     <a
       class={classNames(
         "flex items-center text-[0.875rem] leading-[1.125rem] text-[#1c1c1c]",
-        "hover:text-[#cc071e] cursor-pointer"
+        "hover:text-[#cc071e] cursor-pointer",
       )}
     >
       <div class="mr-[3px] flex items-center">

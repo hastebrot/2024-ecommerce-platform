@@ -24,7 +24,7 @@ export const ShoppingSearch = (props: ShoppingSearchProps) => {
           "peer rounded-[2px] p-[10px] h-[48px] w-full [outline:0]",
           "[box-shadow:0_0_0_1px_#676767] text-[#1c1c1c] placeholder:text-[#858585]",
           "hover:[box-shadow:0_0_0_2px_#1c1c1c] hover:bg-[#f1f1f1]",
-          "focus:[box-shadow:0_0_0_2px_#1c1c1c] focus:bg-[#fff]"
+          "focus:[box-shadow:0_0_0_2px_#1c1c1c] focus:bg-[#fff]",
         )}
         placeholder="Suche"
       />
@@ -34,7 +34,7 @@ export const ShoppingSearch = (props: ShoppingSearchProps) => {
           "w-[48px] h-[48px] rounded-r-[2px]",
           "peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-[#1c1c1c]",
           "peer-placeholder-shown:pointer-events-none",
-          "bg-[#cc071e] hover:bg-[#9e0012] text-[#fff]"
+          "bg-[#cc071e] hover:bg-[#9e0012] text-[#fff]",
         )}
         type="submit"
       >
@@ -43,7 +43,7 @@ export const ShoppingSearch = (props: ShoppingSearchProps) => {
       <div
         class={classNames(
           "hidden group-focus-within:block peer-placeholder-shown:hidden",
-          "absolute top-[calc(48px+1px)] left-[-2px] w-[calc(640px+4px)] z-50"
+          "absolute top-[calc(48px+1px)] left-[-2px] w-[calc(640px+4px)] z-50",
         )}
         tabIndex={-1}
       >
@@ -59,7 +59,7 @@ export const ShoppingSearchSuggestions = () => {
       class={classNames(
         "shopping-search-suggestions bg-[#fff] border border-[#ccc]",
         "flex flex-col",
-        "[box-shadow:0_4px_8px_0_rgba(0,0,0,0.2),0_6px_20px_0_rgba(0,0,0,0.19)]"
+        "[box-shadow:0_4px_8px_0_rgba(0,0,0,0.2),0_6px_20px_0_rgba(0,0,0,0.19)]",
       )}
     >
       <ul>
@@ -85,7 +85,7 @@ export const ShoppingSearchSuggestions = () => {
           class={classNames(
             "font-[400] text-[16px] leading-[1.5] flex items-center justify-center",
             "h-[48px] w-full max-w-[288px] rounded-[2px] bg-[#cc071e] text-[#fff] m-auto",
-            "hover:bg-[#9e0012] cursor-pointer"
+            "hover:bg-[#9e0012] cursor-pointer",
           )}
         >
           Alle Suchergebnisse anzeigen
@@ -144,7 +144,7 @@ export const ShoppingNavigationItemFavorites = () => {
     <button
       class={classNames(
         "flex h-[3rem] min-w-[8.5625rem] rounded-[0.125rem] text-[#1c1c1c] bg-[#fff] px-[0.5rem] border border-[#ccc] items-center justify-start",
-        "hover:bg-[#f1f1f1] hover:border-[#1c1c1c] hover:[box-shadow:inset_0_0_0_1px_#1c1c1c]"
+        "hover:bg-[#f1f1f1] hover:border-[#1c1c1c] hover:[box-shadow:inset_0_0_0_1px_#1c1c1c]",
       )}
     >
       <span class="w-[2rem] h-[2rem] mr-[0.5rem] flex items-center justify-center">
@@ -171,7 +171,7 @@ export const ShoppingNavigationItemBasket = (props: ShoppingNavigationItemBasket
         props.isFilled && [
           "!bg-[#007d3e] !border-[#007d3e] !text-[#fff]",
           "hover:!bg-[#005c2e] hover:!border-[#005c2e]",
-        ]
+        ],
       )}
     >
       <span class="relative">
@@ -186,7 +186,7 @@ export const ShoppingNavigationItemBasket = (props: ShoppingNavigationItemBasket
               "text-[14px] leading-[1] font-[500] bg-[#fff] text-[#007d3e]",
               "rounded-[13px] border-2 border-[#007d3e]",
               "p-[3px_4px] h-[24px] min-w-[24px] max-w-[30px]",
-              "group-hover:!text-[#005c2e] group-hover:!border-[#005c2e]"
+              "group-hover:!text-[#005c2e] group-hover:!border-[#005c2e]",
             )}
           >
             {props.amount}

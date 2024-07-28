@@ -23,7 +23,7 @@ export const CheckoutProgressBar = () => {
     <div
       class={classNames(
         "checkout-progress-bar flex flex-row items-center justify-around",
-        "pt-[12px] px-[35px] min-w-[504px] max-w-[540px]"
+        "pt-[12px] px-[35px] min-w-[504px] max-w-[540px]",
       )}
     >
       <CheckoutProgressBarStep step="1" text="Warenkorb" isCurrent />
@@ -55,7 +55,7 @@ export const CheckoutProgressBarStep = (props: CheckoutProgressBarStepProps) => 
           "flex items-center justify-center h-[32px] w-[32px] mx-[8px]",
           "text-[16px] leading-[1.71] border-2 rounded-[50%]",
           props.isCurrent && "bg-[#4c4c4c] border-[#4c4c4c] text-[#fff]",
-          !props.isCurrent && "border-[#ccc] text-[#ccc]"
+          !props.isCurrent && "border-[#ccc] text-[#ccc]",
         )}
       >
         <span>{props.step}</span>
@@ -64,7 +64,7 @@ export const CheckoutProgressBarStep = (props: CheckoutProgressBarStepProps) => 
         class={classNames(
           "block text-center font-[500] text-[14px] leading-[2.5]",
           props.isCurrent && "text-[#4c4c4c]",
-          !props.isCurrent && "text-[#ccc]"
+          !props.isCurrent && "text-[#ccc]",
         )}
       >
         {props.text}
@@ -120,7 +120,7 @@ export const BasketOverview = () => {
     <div
       class={classNames(
         "grid grid-flow-row grid-cols-[auto_352px] grid-rows-[auto_auto_auto] items-start",
-        "px-[16px] gap-x-[24px] gap-y-[32px] mt-[72px] mb-[50px]"
+        "px-[16px] gap-x-[24px] gap-y-[32px] mt-[72px] mb-[50px]",
       )}
     >
       <BasketButton type="secondary" iconBefore={icons.ArrowLeft}>
@@ -151,7 +151,7 @@ export const BasketOverviewList = () => {
         <div
           class={classNames(
             "flex flex-row flex-wrap items-start justify-start self-stretch content-start",
-            "mt-[12px] gap-x-[12px]"
+            "mt-[12px] gap-x-[12px]",
           )}
         >
           <BasketInformationItem icon={icons.MapPin} text="11011 Berlin" />
@@ -315,7 +315,7 @@ export const BasketLineItem = (props: BasketLineItemProps) => (
   <article
     class={classNames(
       "min-h-[108px] w-full py-[16px] grid grid-cols-[auto_94px_94px] items-center",
-      "border-t border-[#ccc] first-of-type:border-none"
+      "border-t border-[#ccc] first-of-type:border-none",
     )}
   >
     <div class="flex items-center">
@@ -365,7 +365,7 @@ export const BasketLineItem = (props: BasketLineItemProps) => (
     <span
       class={classNames(
         "text-right font-[500] text-[16px] leading-[24px] text-[#1c1c1c]",
-        props.isProductOffer && "text-[#cc071e]"
+        props.isProductOffer && "text-[#cc071e]",
       )}
     >
       {props.productPrice}
@@ -374,7 +374,7 @@ export const BasketLineItem = (props: BasketLineItemProps) => (
     <span
       class={classNames(
         "text-right font-[500] text-[16px] leading-[24px] text-[#1c1c1c]",
-        props.isProductOffer && "text-[#cc071e]"
+        props.isProductOffer && "text-[#cc071e]",
       )}
     >
       {props.totalPrice}
@@ -389,7 +389,7 @@ export const BasketLineItemImage = () => {
         style="--width: 24; --inner-width: 18;"
         class={classNames(
           "w-[72px] h-[72px] shrink-0 text-[#949494] [stroke-width:calc(2px*18/72)]",
-          "origin-center scale-[calc(24/18)]"
+          "origin-center scale-[calc(24/18)]",
         )}
       />
     </span>
@@ -423,7 +423,7 @@ export const BasketLineItemAmount = (props: BasketLineItemAmountProps) => {
         class={classNames(
           "w-[40px] h-[40px] border-[0.633333px] border-[#949494] rounded-l-[8px]",
           "outline-2 outline-offset-[-2px] outline-[#1c1c1c]",
-          "hover:bg-[#f1f1f1] hover:outline hover:z-10"
+          "hover:bg-[#f1f1f1] hover:outline hover:z-10",
         )}
       >
         {props.amount > 1 ? iconMinus : iconTrash}
@@ -435,7 +435,7 @@ export const BasketLineItemAmount = (props: BasketLineItemAmountProps) => {
           "font-[500] text-[16px] leading-[1.1] text-center",
           "outline-2 outline-offset-[-2px] outline-[#1c1c1c]",
           "hover:bg-[#f1f1f1] hover:outline hover:z-10",
-          "focus:bg-[#f1f1f1] focus:outline focus:z-10"
+          "focus:bg-[#f1f1f1] focus:outline focus:z-10",
         )}
         value={props.amount}
         pattern="[0-9]*"
@@ -447,7 +447,7 @@ export const BasketLineItemAmount = (props: BasketLineItemAmountProps) => {
         class={classNames(
           "w-[40px] h-[40px] border-[0.633333px] border-[#949494] rounded-r-[8px]",
           "outline-2 outline-offset-[-2px] outline-[#1c1c1c]",
-          "hover:bg-[#f1f1f1] hover:outline hover:z-10"
+          "hover:bg-[#f1f1f1] hover:outline hover:z-10",
         )}
       >
         {iconPlus}
@@ -557,7 +557,7 @@ export const BasketButton = (props: BasketButtonProps) => {
         props.type === "secondary" && [
           "bg-[#fff] text-[#1c1c1c] [box-shadow:inset_0_0_0_2px_#1c1c1c]",
           "hover:bg-[rgba(0,0,0,0.07)]",
-        ]
+        ],
       )}
     >
       {props.iconBefore && (

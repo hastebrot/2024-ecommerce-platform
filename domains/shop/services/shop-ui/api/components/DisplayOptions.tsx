@@ -70,7 +70,7 @@ export const DisplayOptionsResultsPerPageSelect = () => {
         class={classNames(
           "relative [box-shadow:0_0_0_1px_#676767] text-[#1c1c1c]",
           "rounded-[2px] p-[0_40px_0_8px] h-[40px] text-[18px]",
-          "hover:[box-shadow:0_0_0_2px_#1c1c1c] hover:cursor-pointer"
+          "hover:[box-shadow:0_0_0_2px_#1c1c1c] hover:cursor-pointer",
         )}
       >
         40
@@ -90,7 +90,7 @@ export const DisplayOptionsResultsSortingSelect = () => {
         class={classNames(
           "relative [box-shadow:0_0_0_1px_#676767] text-[#1c1c1c]",
           "rounded-[2px] p-[0_40px_0_8px] h-[40px] text-[18px] text-left",
-          "hover:[box-shadow:0_0_0_2px_#1c1c1c] hover:cursor-pointer"
+          "hover:[box-shadow:0_0_0_2px_#1c1c1c] hover:cursor-pointer",
         )}
       >
         Relevanz

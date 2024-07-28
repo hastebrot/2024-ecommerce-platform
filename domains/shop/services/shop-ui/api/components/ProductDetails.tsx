@@ -86,7 +86,7 @@ export const ProductRecommendations = () => {
       <span
         class={classNames(
           "flex items-center justify-center pt-[20px] pb-[26px] w-full h-[26px]",
-          "text-[16px] text-[#1c1c1c]"
+          "text-[16px] text-[#1c1c1c]",
         )}
       >
         Hast du auch an alles gedacht? Noch mehr passende Produkte für dich:
@@ -98,7 +98,8 @@ export const ProductRecommendations = () => {
           <div class="flex items-center justify-center w-[50px]">
             <span class="fill-[#ccc] rotate-180">
               <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.396.45C6.625-.33 6-.07 6 1.029v21.939c0 1.1.627 1.357 1.396.58L17.419 13.41c.771-.78.77-2.046 0-2.823L7.396.45z"></path>
+                <path d="M7.396.45C6.625-.33 6-.07 6 1.029v21.939c0 1.1.627 1.357 1.396.58L17.419 13.41c.771-.78.77-2.046 0-2.823L7.396.45z">
+                </path>
               </svg>
             </span>
           </div>
@@ -106,7 +107,8 @@ export const ProductRecommendations = () => {
           <div class="flex items-center justify-center w-[50px]">
             <span class="fill-[#4a4a4a]">
               <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.396.45C6.625-.33 6-.07 6 1.029v21.939c0 1.1.627 1.357 1.396.58L17.419 13.41c.771-.78.77-2.046 0-2.823L7.396.45z"></path>
+                <path d="M7.396.45C6.625-.33 6-.07 6 1.029v21.939c0 1.1.627 1.357 1.396.58L17.419 13.41c.771-.78.77-2.046 0-2.823L7.396.45z">
+                </path>
               </svg>
             </span>
           </div>
@@ -188,7 +190,7 @@ export const RecommendationsProductTile = (props: RecommendationsProductTileProp
       <div
         class={classNames(
           "border border-[#ccc] hover:border-[#8c8c8c] rounded-[0.125rem] bg-[#fff] font-[16px]",
-          "flex flex-col p-[1rem] h-[14.9375rem]"
+          "flex flex-col p-[1rem] h-[14.9375rem]",
         )}
       >
         <div class="flex-1 flex flex-row">
