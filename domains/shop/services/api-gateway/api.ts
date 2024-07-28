@@ -1,6 +1,6 @@
 import { CatalogServiceClient } from "./client.ts";
 import { Fmt, Json } from "./helper.ts";
-import { ClientContext } from "./model.ts";
+import { ClientContext } from "./types.ts";
 
 const workspaceHeader = "X-Workspace";
 const responseHeaders = {

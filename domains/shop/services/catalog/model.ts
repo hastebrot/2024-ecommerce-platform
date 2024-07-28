@@ -1,21 +1,14 @@
 import { z, Zod } from "./helper.ts";
 
-export type ServiceContext = {
-  kv: Deno.Kv;
-};
-
-export type ClientContext = {
-  kv: Deno.Kv;
-  workspace: string;
-};
-
 // ENDPOINT MESSAGES.
 
+export type EchoRequest = z.infer<typeof EchoRequest>;
 export const EchoRequest = Zod.schema(
   "EchoRequest",
   z.lazy(() => Echo)
 );
 
+export type EchoResponse = z.infer<typeof EchoResponse>;
 export const EchoResponse = Zod.schema(
   "EchoResponse",
   z.object({
@@ -24,19 +17,23 @@ export const EchoResponse = Zod.schema(
   })
 );
 
+export type WriteProductRequest = z.infer<typeof WriteProductRequest>;
 export const WriteProductRequest = Zod.object("WriteProductRequest", {
   product: z.lazy(() => Product),
 });
 
+export type WriteProductResponse = z.infer<typeof WriteProductResponse>;
 export const WriteProductResponse = Zod.object("WriteProductResponse", {
   ok: z.boolean(),
 });
 
+export type ReadProductsRequest = z.infer<typeof ReadProductsRequest>;
 export const ReadProductsRequest = Zod.object("ReadProductsRequest", {
   category: z.string().nullable().optional(),
   attributes: z.array(z.string()).optional(),
 });
 
+export type ReadProductsResponse = z.infer<typeof ReadProductsResponse>;
 export const ReadProductsResponse = Zod.object("ReadProductsResponse", {
   ok: z.boolean(),
   result: z.object({
@@ -50,7 +47,7 @@ export const ReadProductsResponse = Zod.object("ReadProductsResponse", {
 // MESSAGES.
 
 export type Echo = z.infer<typeof Echo>;
-export const Echo = z.object({
+export const Echo = Zod.object("Echo", {
   message: z.string(),
 });
 

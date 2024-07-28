@@ -1,4 +1,4 @@
-import { Context } from "../model.ts";
+import { Context } from "../types.ts";
 
 // deno-lint-ignore require-await
 export const handleSiteRefresh = async (ctx: Context, req: Request): Promise<Response> => {

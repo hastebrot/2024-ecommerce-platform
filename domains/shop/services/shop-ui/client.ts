@@ -1,4 +1,4 @@
-import { z, Zod } from "./helper/zod.ts";
+import { Zod } from "./helper/zod.ts";
 import * as model from "./model.ts";
 
 const apiGatewayAddr = "localhost:8080";
@@ -9,7 +9,7 @@ const requestHeaders = {
 };
 
 export const CatalogClient = {
-  async readProducts(params: z.infer<typeof model.ReadProductsRequest>) {
+  async readProducts(params: model.ReadProductsRequest) {
     const url = new URL(`http://${apiGatewayAddr}/api/catalog/read-products`);
     const res = await fetch(url, {
       method: "POST",

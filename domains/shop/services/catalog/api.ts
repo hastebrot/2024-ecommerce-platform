@@ -1,15 +1,7 @@
 import { ProductStoreClient } from "./client.ts";
 import { Json, throwError, Zod } from "./helper.ts";
-import {
-  ClientContext,
-  EchoRequest,
-  EchoResponse,
-  ReadProductsRequest,
-  ReadProductsResponse,
-  ServiceContext,
-  WriteProductRequest,
-  WriteProductResponse,
-} from "./model.ts";
+import * as model from "./model.ts";
+import { ClientContext, ServiceContext } from "./types.ts";
 
 const workspaceHeader = "X-Workspace";
 const responseHeaders = {
@@ -21,8 +13,8 @@ export const apiHandler = async (serviceCtx: ServiceContext, req: Request): Prom
   const ctx = transformToClientContext(serviceCtx, req.headers);
 
   if (req.method === "POST" && url.pathname === "/echo") {
-    const input = Zod.parse(EchoRequest, await req.json());
-    const output = Zod.parseTyped(EchoResponse, {
+    const input = Zod.parse(model.EchoRequest, await req.json());
+    const output = Zod.parseTyped(model.EchoResponse, {
       ok: true,
       result: { message: input.message },
     });
@@ -33,9 +25,9 @@ export const apiHandler = async (serviceCtx: ServiceContext, req: Request): Prom
   }
 
   if (req.method === "POST" && url.pathname === "/write-product") {
-    const input = Zod.parse(WriteProductRequest, await req.json());
+    const input = Zod.parse(model.WriteProductRequest, await req.json());
     const output = Zod.parseTyped(
-      WriteProductResponse,
+      model.WriteProductResponse,
       await ProductStoreClient.writeProduct(ctx, input)
     );
     return new Response(Json.write(output), {
@@ -45,9 +37,9 @@ export const apiHandler = async (serviceCtx: ServiceContext, req: Request): Prom
   }
 
   if (req.method === "POST" && url.pathname === "/read-products") {
-    const input = Zod.parse(ReadProductsRequest, await req.json());
+    const input = Zod.parse(model.ReadProductsRequest, await req.json());
     const output = Zod.parseTyped(
-      ReadProductsResponse,
+      model.ReadProductsResponse,
       await ProductStoreClient.readProducts(ctx, input)
     );
     return new Response(Json.write(output), {

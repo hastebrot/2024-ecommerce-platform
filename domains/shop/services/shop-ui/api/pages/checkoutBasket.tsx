@@ -1,6 +1,6 @@
 /** @jsx createElement */
 import { createElement, renderToString } from "../../helper/jsx.ts";
-import { Context } from "../../model.ts";
+import { Context } from "../../types.ts";
 import {
   CheckoutFooter,
   CheckoutHeader,

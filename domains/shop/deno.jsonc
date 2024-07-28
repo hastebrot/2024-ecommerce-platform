@@ -12,7 +12,12 @@
     "dev:shop-ui": "cd services/shop-ui && PORT=8082 deno task -q dev",
     "test": "cd __tests__ && deno task -q test",
     "test:watch": "cd __tests__ && deno task -q test:watch",
-    "test:demo": "cd __tests__ && deno task -q test:demo"
+    "test:demo": "cd __tests__ && deno task -q test:demo",
+    "check": "deno check **/*.ts **/*.tsx",
+    "lint": "deno lint",
+    "lint:fix": "deno lint --fix",
+    "fmt": "deno fmt --check",
+    "fmt:fix": "deno fmt"
   },
   "imports": {
     "@ngneat/falso": "npm:@ngneat/falso@7.2.0",
