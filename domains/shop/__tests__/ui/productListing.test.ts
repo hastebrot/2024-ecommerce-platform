@@ -22,6 +22,9 @@ Deno.test("fetch product-listing", async () => {
 
   const h4 = query(products[0], ".product-details h4");
   assert.assertEquals(h4.textContent, "Bio Banane ca. 200g");
+
+  const resultsText = query(document.body, ".display-options .results-text");
+  assert.assertEquals(resultsText.childNodes[1]?.textContent, "6 Artikel");
 });
 
 Deno.test("fetch product-listing with category and attributes", async () => {
@@ -48,4 +51,7 @@ Deno.test("fetch product-listing with category and attributes", async () => {
 
   const h4 = query(products[0], ".product-details h4");
   assert.assertEquals(h4.textContent, "Bio Banane ca. 200g");
+
+  const resultsText = query(document.body, ".display-options .results-text");
+  assert.assertEquals(resultsText.childNodes[1]?.textContent, "3 Artikel");
 });
