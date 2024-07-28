@@ -3,7 +3,14 @@
   "deno.cacheOnSave": true,
   "deno.unstable": true,
   "deno.future": true,
-  "[typescript][typescriptreact]": {
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescriptreact]": {
     "editor.defaultFormatter": "denoland.vscode-deno",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
