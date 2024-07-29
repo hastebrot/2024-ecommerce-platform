@@ -3,25 +3,29 @@
     "__tests__",
     "services/api-gateway",
     "services/catalog",
+    "services/searcher",
     "services/shop-ui"
   ],
   "tasks": {
-    "dev": "deno task dev:api-gateway & deno task dev:catalog & deno task dev:shop-ui",
+    "dev": "deno task dev:api-gateway & deno task dev:catalog & deno task dev:shop-ui & deno task dev:searcher",
     "dev:api-gateway": "cd services/api-gateway && PORT=8080 deno task -q dev",
     "dev:catalog": "cd services/catalog && PORT=8081 deno task -q dev",
     "dev:shop-ui": "cd services/shop-ui && PORT=8082 deno task -q dev",
+    "dev:searcher": "cd services/searcher && PORT=8083 deno task -q dev",
     "test": "cd __tests__ && deno task -q test",
     "test:watch": "cd __tests__ && deno task -q test:watch",
     "test:demo": "cd __tests__ && deno task -q test:demo",
-    "pr": "deno task check && deno task lint && deno task fmt",
     "check": "deno check **/*.ts **/*.tsx --quiet",
     "lint": "deno lint --quiet",
     "lint:fix": "deno lint --fix",
     "fmt": "deno fmt --check --quiet",
-    "fmt:fix": "deno fmt"
+    "fmt:fix": "deno fmt",
+    "pr": "deno task check && deno task lint && deno task fmt",
+    "prpr": "deno task test && deno task pr"
   },
   "imports": {
     "@ngneat/falso": "npm:@ngneat/falso@7.2.0",
+    "@orama/orama": "npm:@orama/orama@2.0.22",
     "@std/": "https://deno.land/std@0.224.0/",
     "clsx": "npm:clsx@2.1.1",
     "happy-dom": "npm:happy-dom@14.12.3",
