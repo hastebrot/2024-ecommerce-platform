@@ -44,8 +44,8 @@ export const Log = {
 
 export const Json = {
   // deno-lint-ignore no-explicit-any
-  write(text: any): string {
-    return JSON.stringify(text, null, 2);
+  write(text: any, space: number = 2): string {
+    return JSON.stringify(text, null, space);
   },
 
   read(text: string): string {
@@ -75,7 +75,10 @@ export const Id = {
 };
 
 export const Zod = {
-  parseTyped<Out, In>(schema: z.ZodType<Out, z.ZodTypeDef, In>, value: In): Out {
+  parseTyped<Out, In>(
+    schema: z.ZodType<Out, z.ZodTypeDef, In>,
+    value: In,
+  ): Out {
     try {
       return schema.parse(value);
     } catch (error: unknown) {
@@ -88,7 +91,10 @@ export const Zod = {
     }
   },
 
-  parse<Out, In>(schema: z.ZodType<Out, z.ZodTypeDef, In>, value: unknown): Out {
+  parse<Out, In>(
+    schema: z.ZodType<Out, z.ZodTypeDef, In>,
+    value: unknown,
+  ): Out {
     return Zod.parseTyped(schema, value);
   },
 
@@ -96,7 +102,10 @@ export const Zod = {
     return schema.describe(description);
   },
 
-  object<T extends z.ZodRawShape>(description: string, shape: T): ReturnType<typeof z.object<T>> {
+  object<T extends z.ZodRawShape>(
+    description: string,
+    shape: T,
+  ): ReturnType<typeof z.object<T>> {
     return z.object(shape).describe(description);
   },
 };

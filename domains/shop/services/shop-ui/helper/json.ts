@@ -1,7 +1,7 @@
 export const Json = {
   // deno-lint-ignore no-explicit-any
-  write(text: any): string {
-    return JSON.stringify(text, null, 2);
+  write(text: any, space: number = 2): string {
+    return JSON.stringify(text, null, space);
   },
 
   read(text: string): string {

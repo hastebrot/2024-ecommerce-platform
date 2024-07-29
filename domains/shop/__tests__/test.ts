@@ -1,6 +1,6 @@
 import { dom, nanoid } from "./deps.ts";
 
-const defaultHeaders = {
+const requestHeaders = {
   "cache-control": "no-transform",
 };
 
@@ -18,7 +18,7 @@ export const fetchGet = (params: FetchGetParams) => {
   return fetch(url, {
     method: "GET",
     headers: {
-      ...defaultHeaders,
+      ...requestHeaders,
       ...params.headers,
     },
   });
@@ -40,7 +40,7 @@ export const fetchPost = (params: FetchPostParams) => {
     method: "POST",
     body: JSON.stringify(params.bodyParams),
     headers: {
-      ...defaultHeaders,
+      ...requestHeaders,
       ...params.headers,
     },
   });
