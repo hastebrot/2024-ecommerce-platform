@@ -64,6 +64,7 @@ export const ReadProductsResponse = Zod.object("ReadProductsResponse", {
   ok: z.boolean(),
   result: z.object({
     products: z.array(Product),
+    categoryPath: z.array(Category),
   }),
   count: z.object({
     products: z.number(),

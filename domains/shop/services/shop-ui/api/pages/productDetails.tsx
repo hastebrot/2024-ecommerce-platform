@@ -15,6 +15,12 @@ import { ShoppingHeader } from "../components/ShoppingHeader.tsx";
 
 // deno-lint-ignore require-await
 export const handleProductDetails = async (_ctx: Context, _req: Request): Promise<Response> => {
+  const categoryPath = [
+    { id: "obst-gemuese", category: "Obst & Gemüse" },
+    { id: "frisches-obst", category: "Frisches Obst" },
+    { id: "bananen", category: "Bananen" },
+  ];
+
   const html = renderToString(
     <Page>
       <title hx-swap-oob="innerHTML:title">product-details &middot; shop-ui</title>
@@ -25,7 +31,7 @@ export const handleProductDetails = async (_ctx: Context, _req: Request): Promis
       <CategoriesNavigation />
 
       {/* page content. */}
-      <Breadcrumbs />
+      <Breadcrumbs categoryPath={categoryPath} />
       <ProductDetails />
       <ProductRecommendations />
 
