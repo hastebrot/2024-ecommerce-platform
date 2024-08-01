@@ -6,6 +6,7 @@ const demoWorkspace = "demo";
 Deno.test("demo write products", async () => {
   const categoryObstGemuese = { id: "obst-gemuese", category: "Obst & Gemüse" };
   const categoryFrischesObst = { id: "frisches-obst", category: "Frisches Obst" };
+  const categoryBananen = { id: "bananen", category: "Bananen" };
   const attributeBio = { id: "bio", attribute: "Bio" };
   const attributeGesponsert = { id: "gesponsert", attribute: "Gesponsert" };
   const attributeTiefpreis = { id: "tiefpreis", attribute: "Tiefpreis" };
@@ -15,7 +16,7 @@ Deno.test("demo write products", async () => {
     {
       productNumber: "1",
       productTitle: "Bio Banane ca. 200g",
-      categoryPath: [categoryObstGemuese, categoryFrischesObst],
+      categoryPath: [categoryObstGemuese, categoryFrischesObst, categoryBananen],
       attributeList: [attributeBio],
     },
     {

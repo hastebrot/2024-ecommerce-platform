@@ -20,6 +20,7 @@ export const handleProductListing = async (_ctx: Context, req: Request): Promise
     attributes,
   });
   const products = productsResult.result.products;
+  const categoryPath = productsResult.result.categoryPath;
   const html = renderToString(
     <Page>
       <title hx-swap-oob="innerHTML:title">product-listing &middot; shop-ui</title>
@@ -30,7 +31,7 @@ export const handleProductListing = async (_ctx: Context, req: Request): Promise
       <CategoriesNavigation />
 
       {/* page content. */}
-      <Breadcrumbs />
+      <Breadcrumbs categoryPath={categoryPath} />
       <DisplayOptions products={products} />
       <FacetedProductList products={products} />
 

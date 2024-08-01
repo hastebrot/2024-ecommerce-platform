@@ -1,14 +1,26 @@
 /** @jsx createElement */
 import { icons } from "lucide-preact";
 import { classNames, createElement } from "../../helper/jsx.ts";
+import { Category } from "../../model.ts";
 
-export const Breadcrumbs = () => {
+export type BreadcrumbsProps = {
+  categoryPath: Category[];
+};
+
+export const Breadcrumbs = (props: BreadcrumbsProps) => {
+  const lastIndex = Math.max(0, props.categoryPath.length - 1);
+
   return (
-    <div class="bg-[#fff] flex">
+    <div class="breadcrumbs bg-[#fff] flex">
       <nav class="flex items-center justify-start flex-wrap m-[10px_0_0_15px] gap-x-[20px]">
         <BreadcrumbsLink text="Zurück" isBackLink />
-        <BreadcrumbsLink text="Obst & Gemüse" />
-        <BreadcrumbsItem text="Frisches Obst" />
+        {props.categoryPath.map((category, index) => {
+          if (index < lastIndex) {
+            return <BreadcrumbsLink text={category.category} />;
+          } else {
+            return <BreadcrumbsItem text={category.category} />;
+          }
+        })}
       </nav>
     </div>
   );
@@ -25,7 +37,7 @@ export const BreadcrumbsLink = (props: BreadcrumbsLinkProps) => {
   return (
     <a
       class={classNames(
-        "flex items-center text-[0.875rem] leading-[1.125rem] text-[#1c1c1c]",
+        "breadcrumbs-link flex items-center text-[0.875rem] leading-[1.125rem] text-[#1c1c1c]",
         "hover:text-[#cc071e] cursor-pointer",
       )}
     >
@@ -50,7 +62,11 @@ export const BreadcrumbsItem = (props: BreadcrumbsItemProps) => {
   // TODO(benjamin): in product details leaf-link uses text-[#bb2929].
 
   return (
-    <div class={classNames("flex items-center text-[0.875rem] leading-[1.125rem] text-[#1c1c1c]")}>
+    <div
+      class={classNames(
+        "breadcrumbs-item flex items-center text-[0.875rem] leading-[1.125rem] text-[#1c1c1c]",
+      )}
+    >
       {props.text}
     </div>
   );

@@ -41,6 +41,7 @@ Deno.test("write and read products", async () => {
             attributeList: [],
           },
         ],
+        categoryPath: [],
       },
       count: {
         products: 2,
@@ -103,6 +104,9 @@ Deno.test("read products with category filter", async () => {
             categoryPath: [{ id: "category-1", category: "Category 1" }],
             attributeList: [],
           },
+        ],
+        categoryPath: [
+          { id: "category-1", category: "Category 1" },
         ],
       },
       count: {
@@ -169,6 +173,7 @@ Deno.test("read products with attributes filter", async () => {
             attributeList: [{ id: "attribute-1", attribute: "Attribute 1" }],
           },
         ],
+        categoryPath: [],
       },
       count: {
         products: 1,
@@ -197,6 +202,83 @@ Deno.test("read products with attributes filter", async () => {
     },
     bodyParams: {
       attributes: ["attribute-1"],
+    },
+  });
+  const output = await consumeJson<object>(res);
+  assert.assertObjectMatch(output, data.output);
+});
+
+Deno.test("read products with category path", async () => {
+  const data = {
+    input: [
+      {
+        product: {
+          productNumber: "1",
+          productTitle: "product title",
+          categoryPath: [
+            { id: "category-1", category: "Category 1" },
+            { id: "category-2", category: "Category 2" },
+          ],
+          attributeList: [],
+        },
+      },
+      {
+        product: {
+          productNumber: "2",
+          productTitle: "other product title",
+          categoryPath: [
+            { id: "category-3", category: "Category 3" },
+          ],
+          attributeList: [],
+        },
+      },
+    ],
+    output: {
+      ok: true,
+      result: {
+        products: [
+          {
+            productNumber: "1",
+            productTitle: "product title",
+            categoryPath: [
+              { id: "category-1", category: "Category 1" },
+              { id: "category-2", category: "Category 2" },
+            ],
+            attributeList: [],
+          },
+        ],
+        categoryPath: [
+          { id: "category-1", category: "Category 1" },
+          { id: "category-2", category: "Category 2" },
+        ],
+      },
+      count: {
+        products: 1,
+      },
+    },
+  };
+
+  // when:
+  for (const input of data.input) {
+    await consumeJson(
+      await fetchPost({
+        url: `http://${apiGatewayAddr}/api/catalog/write-product`,
+        headers: {
+          "x-workspace": testWorkspace,
+        },
+        bodyParams: input,
+      }),
+    );
+  }
+
+  // then:
+  const res = await fetchPost({
+    url: `http://${apiGatewayAddr}/api/catalog/read-products`,
+    headers: {
+      "x-workspace": testWorkspace,
+    },
+    bodyParams: {
+      category: "category-2",
     },
   });
   const output = await consumeJson<object>(res);

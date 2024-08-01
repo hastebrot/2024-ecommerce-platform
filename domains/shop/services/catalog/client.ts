@@ -29,8 +29,14 @@ export const ProductStoreClient = {
     const selector = { prefix: [...workspaceKey, "products"] };
     const entries = ctx.kv.list(selector, { limit: 100 });
     const products = [];
+    let categoryPath: model.Category[] = [];
     for await (const entry of entries) {
       const product = Zod.parse(model.Product, entry.value);
+      if (params.category?.length && categoryPath.length === 0) {
+        if (hasCategory(product, params.category)) {
+          categoryPath = product.categoryPath;
+        }
+      }
       if (params.category?.length) {
         if (!hasCategory(product, params.category)) {
           continue;
@@ -45,8 +51,13 @@ export const ProductStoreClient = {
     }
     return {
       ok: true,
-      result: { products },
-      count: { products: products.length },
+      result: {
+        products,
+        categoryPath,
+      },
+      count: {
+        products: products.length,
+      },
     };
   },
 };
