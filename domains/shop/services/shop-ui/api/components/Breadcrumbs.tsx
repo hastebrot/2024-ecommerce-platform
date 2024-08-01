@@ -13,10 +13,12 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
   return (
     <div class="breadcrumbs bg-[#fff] flex">
       <nav class="flex items-center justify-start flex-wrap m-[10px_0_0_15px] gap-x-[20px]">
-        <BreadcrumbsLink text="Zurück" isBackLink />
+        <BreadcrumbsLink text="Zurück" linkHref="?category=" isBackLink />
         {props.categoryPath.map((category, index) => {
           if (index < lastIndex) {
-            return <BreadcrumbsLink text={category.category} />;
+            return (
+              <BreadcrumbsLink text={category.category} linkHref={`?category=${category.id}`} />
+            );
           } else {
             return <BreadcrumbsItem text={category.category} />;
           }
@@ -28,6 +30,7 @@ export const Breadcrumbs = (props: BreadcrumbsProps) => {
 
 export type BreadcrumbsLinkProps = {
   text: string;
+  linkHref: string;
   isBackLink?: boolean;
 };
 
@@ -40,6 +43,7 @@ export const BreadcrumbsLink = (props: BreadcrumbsLinkProps) => {
         "breadcrumbs-link flex items-center text-[0.875rem] leading-[1.125rem] text-[#1c1c1c]",
         "hover:text-[#cc071e] cursor-pointer",
       )}
+      href={props.linkHref}
     >
       <div class="mr-[3px] flex items-center">
         {props.isBackLink && (
