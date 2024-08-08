@@ -117,28 +117,41 @@ export const CheckoutSearchContainer = () => {
 
 export const BasketOverview = () => {
   return (
-    <div
-      class={classNames(
-        "grid grid-flow-row grid-cols-[auto_352px] grid-rows-[auto_auto_auto] items-start",
-        "px-[16px] gap-x-[24px] gap-y-[32px] mt-[72px] mb-[50px]",
-      )}
-    >
-      <BasketButton type="secondary" iconBefore={icons.ArrowLeft}>
-        Zurück
-      </BasketButton>
-      <BasketButton type="primary" iconAfter={icons.ArrowRight}>
-        Zur Kasse
-      </BasketButton>
+    <div class="flex flex-col mt-[72px] mb-[50px] gap-y-[32px]">
+      <div
+        class={classNames(
+          "grid grid-flow-row grid-cols-[auto_352px] items-start",
+          "px-[16px] gap-x-[24px]",
+        )}
+      >
+        <div class="flex flex-col gap-y-[32px]">
+          <BasketButton type="secondary" iconBefore={icons.ArrowLeft}>
+            Zurück
+          </BasketButton>
+          <BasketOverviewList />
+        </div>
 
-      <BasketOverviewList />
-      <BasketSummaryContainer />
+        <div class="sticky top-[32px] flex flex-col gap-y-[32px]">
+          <BasketButton type="primary" iconAfter={icons.ArrowRight}>
+            Zur Kasse
+          </BasketButton>
+          <BasketSummaryContainer />
+        </div>
+      </div>
 
-      <BasketButton type="secondary" iconBefore={icons.ArrowLeft}>
-        Zurück
-      </BasketButton>
-      <BasketButton type="primary" iconAfter={icons.ArrowRight}>
-        Zur Kasse
-      </BasketButton>
+      <div
+        class={classNames(
+          "grid grid-flow-row grid-cols-[auto_352px] items-start",
+          "px-[16px] gap-x-[24px]",
+        )}
+      >
+        <BasketButton type="secondary" iconBefore={icons.ArrowLeft}>
+          Zurück
+        </BasketButton>
+        <BasketButton type="primary" iconAfter={icons.ArrowRight}>
+          Zur Kasse
+        </BasketButton>
+      </div>
     </div>
   );
 };
@@ -477,7 +490,7 @@ const BasketAgeVerificationInformation = () => {
 
 export const BasketSummaryContainer = () => {
   return (
-    <div class="sticky top-[32px]">
+    <div class="">
       <BasketSummary />
       <BasketInfobox linkText="Mehr zu Ersatzartikeln">
         Ist ein Produkt nicht mehr vorrätig, bieten wir dir ein ähnliches als Ersatzartikel an.
@@ -522,7 +535,7 @@ export type BasketInfoboxProps = {
 
 export const BasketInfobox = (props: BasketInfoboxProps) => {
   return (
-    <div class="bg-[#eaeef3] rounded-[16px] p-[16px] mb-[16px] flex gap-[8px]">
+    <div class="bg-[#eaeef3] rounded-[16px] p-[16px] mb-[16px] last:mb-0 flex gap-[8px]">
       <span class="flex items-start justify-start shrink-0 w-[48px] h-[48px]">
         <icons.Image class="w-[40px] h-[40px] shrink-0 [stroke-width:calc(2px*24/40)]" />
       </span>
