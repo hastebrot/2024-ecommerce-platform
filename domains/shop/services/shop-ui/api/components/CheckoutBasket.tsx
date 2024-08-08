@@ -535,7 +535,7 @@ export type BasketInfoboxProps = {
 
 export const BasketInfobox = (props: BasketInfoboxProps) => {
   return (
-    <div class="bg-[#eaeef3] rounded-[16px] p-[16px] mb-[16px] flex gap-[8px]">
+    <div class="bg-[#eaeef3] rounded-[16px] p-[16px] mb-[16px] last:mb-0 flex gap-[8px]">
       <span class="flex items-start justify-start shrink-0 w-[48px] h-[48px]">
         <icons.Image class="w-[40px] h-[40px] shrink-0 [stroke-width:calc(2px*24/40)]" />
       </span>
