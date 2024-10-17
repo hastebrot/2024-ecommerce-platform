@@ -1,80 +1,69 @@
 {
-  "version": "3",
-  "packages": {
-    "specifiers": {
-      "npm:@ngneat/falso@7.2.0": "npm:@ngneat/falso@7.2.0",
-      "npm:clsx@2.1.1": "npm:clsx@2.1.1",
-      "npm:happy-dom@14.12.3": "npm:happy-dom@14.12.3",
-      "npm:lucide-preact@0.414.0": "npm:lucide-preact@0.414.0_preact@10.23.0",
-      "npm:nanoid@5.0.7": "npm:nanoid@5.0.7",
-      "npm:preact-render-to-string@6.5.6": "npm:preact-render-to-string@6.5.6_preact@10.23.0",
-      "npm:preact@10.23.0": "npm:preact@10.23.0",
-      "npm:zod@3.23.8": "npm:zod@3.23.8"
+  "version": "4",
+  "specifiers": {
+    "npm:@ngneat/falso@7.2.0": "7.2.0",
+    "npm:clsx@2.1.1": "2.1.1",
+    "npm:happy-dom@15.7.4": "15.7.4",
+    "npm:lucide-preact@0.453.0": "0.453.0_preact@10.24.3",
+    "npm:nanoid@5.0.7": "5.0.7",
+    "npm:preact-render-to-string@6.5.11": "6.5.11_preact@10.24.3",
+    "npm:preact@10.24.3": "10.24.3",
+    "npm:zod@3.23.8": "3.23.8"
+  },
+  "npm": {
+    "@ngneat/falso@7.2.0": {
+      "integrity": "sha512-283EXBFd05kCbGuGSXgmvhCsQYEYzvD/eJaE7lxd05qRB0tgREvZX7TRlJ1KSp8nHxoK6Ws029G1Y30mt4IVAA==",
+      "dependencies": [
+        "seedrandom",
+        "uuid"
+      ]
     },
-    "npm": {
-      "@ngneat/falso@7.2.0": {
-        "integrity": "sha512-283EXBFd05kCbGuGSXgmvhCsQYEYzvD/eJaE7lxd05qRB0tgREvZX7TRlJ1KSp8nHxoK6Ws029G1Y30mt4IVAA==",
-        "dependencies": {
-          "seedrandom": "seedrandom@3.0.5",
-          "uuid": "uuid@8.3.2"
-        }
-      },
-      "clsx@2.1.1": {
-        "integrity": "sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==",
-        "dependencies": {}
-      },
-      "entities@4.5.0": {
-        "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==",
-        "dependencies": {}
-      },
-      "happy-dom@14.12.3": {
-        "integrity": "sha512-vsYlEs3E9gLwA1Hp+w3qzu+RUDFf4VTT8cyKqVICoZ2k7WM++Qyd2LwzyTi5bqMJFiIC/vNpTDYuxdreENRK/g==",
-        "dependencies": {
-          "entities": "entities@4.5.0",
-          "webidl-conversions": "webidl-conversions@7.0.0",
-          "whatwg-mimetype": "whatwg-mimetype@3.0.0"
-        }
-      },
-      "lucide-preact@0.414.0_preact@10.23.0": {
-        "integrity": "sha512-oW3TmbqfA3GS/yUdXiUZQxIXtNLzpRIy8g+LSYE+39Jw3TmW/OhDPivdhVjoxbGC90z0je2oiiVaPOtiW40NhA==",
-        "dependencies": {
-          "preact": "preact@10.23.0"
-        }
-      },
-      "nanoid@5.0.7": {
-        "integrity": "sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==",
-        "dependencies": {}
-      },
-      "preact-render-to-string@6.5.6_preact@10.23.0": {
-        "integrity": "sha512-msFdv7/ooTV6OIodAnU87V4ct+m2DA1rwaRYV+DNvTYpm/ZInQfoGrcHmbTkV7TOcJaHh5wt1NjiALA46Jyxhw==",
-        "dependencies": {
-          "preact": "preact@10.23.0"
-        }
-      },
-      "preact@10.23.0": {
-        "integrity": "sha512-Pox0jeY4q6PGkFB5AsXni+zHxxx/sAYFIFZzukW4nIpoJLRziRX0xC4WjZENlkSrDQvqVgZcaZzZ/NL8/A+H/w==",
-        "dependencies": {}
-      },
-      "seedrandom@3.0.5": {
-        "integrity": "sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==",
-        "dependencies": {}
-      },
-      "uuid@8.3.2": {
-        "integrity": "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==",
-        "dependencies": {}
-      },
-      "webidl-conversions@7.0.0": {
-        "integrity": "sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==",
-        "dependencies": {}
-      },
-      "whatwg-mimetype@3.0.0": {
-        "integrity": "sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q==",
-        "dependencies": {}
-      },
-      "zod@3.23.8": {
-        "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==",
-        "dependencies": {}
-      }
+    "clsx@2.1.1": {
+      "integrity": "sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA=="
+    },
+    "entities@4.5.0": {
+      "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw=="
+    },
+    "happy-dom@15.7.4": {
+      "integrity": "sha512-r1vadDYGMtsHAAsqhDuk4IpPvr6N8MGKy5ntBo7tSdim+pWDxus2PNqOcOt8LuDZ4t3KJHE+gCuzupcx/GKnyQ==",
+      "dependencies": [
+        "entities",
+        "webidl-conversions",
+        "whatwg-mimetype"
+      ]
+    },
+    "lucide-preact@0.453.0_preact@10.24.3": {
+      "integrity": "sha512-uqVRJ1jaPrAM4jzfkLotG/hvbTJn7z15Kx6a54lS52nMo/zi4mWFJqWGXixxZugep9AyXvtUPkZAiA7KT65wVQ==",
+      "dependencies": [
+        "preact"
+      ]
+    },
+    "nanoid@5.0.7": {
+      "integrity": "sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ=="
+    },
+    "preact-render-to-string@6.5.11_preact@10.24.3": {
+      "integrity": "sha512-ubnauqoGczeGISiOh6RjX0/cdaF8v/oDXIjO85XALCQjwQP+SB4RDXXtvZ6yTYSjG+PC1QRP2AhPgCEsM2EvUw==",
+      "dependencies": [
+        "preact"
+      ]
+    },
+    "preact@10.24.3": {
+      "integrity": "sha512-Z2dPnBnMUfyQfSQ+GBdsGa16hz35YmLmtTLhM169uW944hYL6xzTYkJjC07j+Wosz733pMWx0fgON3JNw1jJQA=="
+    },
+    "seedrandom@3.0.5": {
+      "integrity": "sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg=="
+    },
+    "uuid@8.3.2": {
+      "integrity": "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
+    },
+    "webidl-conversions@7.0.0": {
+      "integrity": "sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g=="
+    },
+    "whatwg-mimetype@3.0.0": {
+      "integrity": "sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q=="
+    },
+    "zod@3.23.8": {
+      "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g=="
     }
   },
   "remote": {
@@ -118,11 +107,11 @@
     "dependencies": [
       "npm:@ngneat/falso@7.2.0",
       "npm:clsx@2.1.1",
-      "npm:happy-dom@14.12.3",
-      "npm:lucide-preact@0.414.0",
+      "npm:happy-dom@15.7.4",
+      "npm:lucide-preact@0.453.0",
       "npm:nanoid@5.0.7",
-      "npm:preact-render-to-string@6.5.6",
-      "npm:preact@10.23.0",
+      "npm:preact-render-to-string@6.5.11",
+      "npm:preact@10.24.3",
       "npm:zod@3.23.8"
     ]
   }
