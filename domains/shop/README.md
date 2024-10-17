@@ -1,5 +1,13 @@
 ## `domains/shop`
 
+**usage:**
+
+- `❯ deno upgrade v2.0.0`
+- `❯ cd domains/shop/`
+- `❯ deno task dev`
+- `❯ deno task test`
+- `❯ open -a safari --url "http://localhost:8082/"`
+
 **architecture:**
 
 - the code is split into microservices
